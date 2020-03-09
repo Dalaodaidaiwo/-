@@ -1,0 +1,36 @@
+<view class="relation-customer-container">
+    <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+            <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+            <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+            <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                <icon type="clear" size="14"></icon>
+            </view>
+        </view>
+        <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+            <icon class="weui-icon-search" type="search" size="14"></icon>
+            <view class="weui-search-bar__text">搜索</view>
+        </label>
+    </view>
+    <view class="weui-panel">
+        <view class="weui-panel__bd">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd weui-cell_primary">
+                    <text>总数3000人，今日联系200人</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="weui-panel">
+        <view class="weui-panel__bd">
+            <scroll-view scroll-y="{{true}}" scroll-with-animation="{{true}}" bindscrolltolower="loadMore">
+                <navigator wx:for="{{relations}}" wx:key="*this" url="/pages/card-detail/card-detail?_id={{item.fromUser._id}}" hover-class="weui-cell_active">
+                    <card-list-item-v2 user="{{item.fromUser}}"></card-list-item-v2>
+                </navigator>
+                <view class="weui-cell weui-cell_access loadmore" wx:if="{{loading}}">
+                    <text>正在加载...</text>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>
