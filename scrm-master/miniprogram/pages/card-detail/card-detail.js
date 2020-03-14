@@ -11,7 +11,7 @@ Page({
             const _=db.command;
             db.collection("card-details")
                 .where({
-                    userId:this.data.userId
+                  _openid: this.data._openid
                 })
                 .limit(1)
                 .get({

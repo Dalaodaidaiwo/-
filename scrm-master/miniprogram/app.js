@@ -13,7 +13,7 @@ App({
         //   env 参数决定接下来小程序发起的云开发调用（wx.cloud.xxx）会默认请求到哪个云环境的资源
         //   此处请填入环境 ID, 环境 ID 可打开云控制台查看
         //   如不填则使用默认环境（第一个创建的环境）
-        // env: 'my-env-id',
+        env: 'first-test-yo193',
         traceUser: true,//自动跟踪用户
       })
     }
@@ -30,7 +30,7 @@ App({
     // 登录
     wx.login({
       success: res => {
-        console.log(res);
+        //console.log(res);
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     });
@@ -44,7 +44,7 @@ App({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
-              console.log(res);
+              //console.log(res);
               that.globalData.userInfo = res.userInfo
               that.globalData.userInfo.avatar=res.userInfo.avatarUrl;
               that.globalData.userInfo.creatTime=new Date();
