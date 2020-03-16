@@ -6,6 +6,7 @@
 <swiper-item><image src='/assets/images/t2.png'></image></swiper-item>
 <swiper-item><image src='/assets/images/t3.jpg'></image></swiper-item>
 <swiper-item><image src='/assets/images/t4.jpg'></image></swiper-item>
+<swiper-item><image src='/assets/images/t5.jpg'></image></swiper-item>
 </swiper>
 </view>
 
@@ -64,7 +65,10 @@
                         <image class="weui-grid__icon" src="/assets/images/edit.png" />
                         <view class="weui-grid__label">编辑</view>
                     </navigator>
-                  
+                     <navigator url="/pages/room/room" class="weui-grid" hover-class="weui-grid_active">
+                        <image class="weui-grid__icon" src="/assets/images/msg-3.png" />
+                        <view class="weui-grid__label">聊天室</view>
+                    </navigator>
                 </view>
             </view>
         </view>

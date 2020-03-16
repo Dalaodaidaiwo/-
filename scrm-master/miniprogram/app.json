@@ -14,7 +14,8 @@
     "pages/share-main/share-main",
     "pages/verify/verify",
     "pages/data-main/data-main",
-    "pages/poster-list/poster-list"
+    "pages/poster-list/poster-list",
+    "pages/room/room"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -46,7 +47,7 @@
         "selectedIconPath": "assets/images/data-2.png"
       },
       {
-        "text": "我的",
+        "text": "设置",
         "pagePath": "pages/mine/mine",
         "iconPath": "assets/images/user-1.png",
         "selectedIconPath": "assets/images/user-2.png"
