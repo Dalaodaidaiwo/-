@@ -46,6 +46,29 @@ Page({
             console.error('[数据库] [更新记录] 失败：', err)
         }
       }),
+
+        db.collection('card-details').doc("31812d39-2849-483e-b344-8ea364c507ce").update({
+         data: {
+            hometown: this.data.hometown,
+            speciality: this.data.speciality,
+            school: this.data.school,
+            userId:  this.data.userInfo.userId
+
+          },
+          success: res => {
+            this.setData({
+              hometown: this.data.hometown,
+              speciality: this.data.speciality,
+              school: this.data.school
+            })
+            console.log("DB OKK");
+          },
+          fail: err => {
+            icon: 'none',
+              console.error('[数据库] [更新记录] 失败：', err)
+          }
+
+        }),
         wx.navigateBack({
             delta: 1
         });
@@ -74,6 +97,27 @@ Page({
       title: e.detail.value
     })
     console.log(e.detail.value)
+  },
+  bindhometownInput: function (e) {
+    this.setData({
+      hometown: e.detail.value
+    })
+    console.log(e.detail.value)
+    console.log(e)
+  },
+  bindspecialityInput: function (e) {
+    this.setData({
+     speciality: e.detail.value
+    })
+    console.log(e.detail.value)
+    console.log(e)
+  },
+  bindschoolInput: function (e) {
+    this.setData({
+      school: e.detail.value
+    })
+    console.log(e.detail.value)
+    console.log(e)
   },
     chooseLocation(e){
         let that=this;

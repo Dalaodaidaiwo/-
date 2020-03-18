@@ -40,14 +40,18 @@
                     <!-- <i class="iconfont icon-shanchu" bindtap="clear"></i> -->
                     <!-- <i class="iconfont icon-direction-rtl {{formats.direction === 'rtl' ? 'ql-active' : ''}}" data-name="direction" data-value="rtl"></i> -->
                 </view>
-                <editor id="editor" class="ql-container" placeholder="{{placeholder}}" showImgSize showImgToolbar showImgResize bindstatuschange="onStatusChange" read-only="{{readOnly}}" bindready="onEditorReady"></editor>
+                <editor id="editor" class="ql-container" placeholder="{{placeholder}}" showImgSize showImgToolbar showImgResize bindstatuschange="onStatusChange" read-only="{{readOnly}}" bindready="onEditorReady">
+                </editor>
+                
             </view>
+            
         </view>
+      
     </view>
     <view class="weui-flex btn-container">
         <view class="weui-flex__item btn-view">
             <view class="placeholder">
-                <button type="primary" loading="{{loading}}" disabled="{{disabled}}" bindtap="toEditMain">
+                <button  type="primary" loading="{{loading}}" disabled="{{disabled}}" bindtap="toEditMain">
                     保存
                 </button>
             </view>

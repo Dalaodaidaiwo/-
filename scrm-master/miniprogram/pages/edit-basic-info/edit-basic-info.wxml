@@ -52,7 +52,7 @@
                         <view class="weui-label">我的家乡</view>
                     </view>
                     <view class="weui-cell__bd">
-                        <input name="hometown" class="weui-input" placeholder="我的家乡" />
+                       <input bindblur="bindhometownInput" value="{{hometown}}" id="hometown" name="hometown" class="weui-input" placeholder="我的家乡" />
                     </view>
                 </view>
                 <view class="weui-cell">
@@ -60,7 +60,7 @@
                         <view class="weui-label">我的母校</view>
                     </view>
                     <view class="weui-cell__bd">
-                        <input name="school" class="weui-input" placeholder="我的母校" />
+                         <input bindblur="bindschoolInput" value="{{school}}" id="school" name="school" class="weui-input" placeholder="我的母校" />
                     </view>
                 </view>
                 <view class="weui-cell">
@@ -68,7 +68,7 @@
                         <view  class="weui-label">我的专业</view>
                     </view>
                     <view class="weui-cell__bd">
-                        <input name="speciality" class="weui-input" placeholder="我的专业" />
+                        <input bindblur="bindspecialityInput" value="{{speciality}}" id="speciality" name="speciality" class="weui-input" placeholder="我的专业" />
                     </view>
                 </view>
             </view>
