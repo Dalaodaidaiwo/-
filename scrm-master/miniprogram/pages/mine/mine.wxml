@@ -3,12 +3,13 @@
         <view class="weui-panel__bd">
             <view class="weui-cell">
                 <view class="weui-cell__hd head">
-                    <image src="../../assets/images/avatar.jpg"></image>
+                    <image src="{{avatar||'/assets/images/pic_160.png'}}"></image>
                 </view>
+               
                 <view class="weui-cell__bd">
-                    <view class="name">大漠穷秋</view>
-                    <view class="account" bindtap="bindAccount">飞碟探索工程师</view>
-                </view>
+                    <view class="name">{{name}}</view>
+                    <view class="account" bindtap="bindAccount"> {{title}} </view>
+                </view> >
             </view>
         </view>
     </view>

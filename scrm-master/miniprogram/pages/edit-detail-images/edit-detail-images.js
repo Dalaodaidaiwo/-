@@ -107,7 +107,6 @@ Page({
         wx.chooseImage({
             count: 1,
             success: function (res) {
-              console.log(res.data);
             that.editorCtx.insertImage({
               /*
                 src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543767268337&di=5a3bbfaeb30149b2afd33a3c7aaa4ead&imgtype=0&src=http%3A%2F%2Fimg02.tooopen.com%2Fimages%2F20151031%2Ftooopen_sy_147004931368.jpg',*/
