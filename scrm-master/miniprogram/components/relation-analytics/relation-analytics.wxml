@@ -21,7 +21,7 @@
     <view class="weui-panel">
         <view class="weui-panel__bd">
             <view class="chart-container">
-                <ec-canvas ec="{{ ec2 }}"></ec-canvas>
+                <ec-canvas ec="{{ ec2 }}" id="mychart-dom-bar"></ec-canvas>
             </view>
         </view>
     </view>

@@ -10,6 +10,75 @@ let chart1 = null;//力导向图
 let chart2 = null;//地图
 let chart3 = null;//曲线图
 
+function initOption(data) {
+    return {
+      title: {
+        text: '地域分布',
+        left: 'left'
+      },
+      tooltip: {
+        trigger: 'item',
+        formatter: '病人数:{c0}'
+      },
+      position: 'top',
+      visualMap: {
+        show: true,
+        type: 'piecewise',
+        min: 0,
+        max: 100,
+        align: 'left',
+        top: 'center',
+        left: 0,
+        left: 'auto',
+        inRange: {
+          color: [
+            '#ffc0b1',
+            '#ff8c71',
+            '#ef1717',
+            '#9c0505'
+          ]
+        },
+        pieces: [
+          { min: 1000 },
+          { min: 500, max: 999 },
+          { min: 40, max: 499 },
+          { min: 10, max: 39 },
+          { min: 1, max: 9 }
+        ],
+        orient: 'vertical',
+        showLabel: true,
+        itemWidth: 10,
+        itemHeight: 10,
+        textStyle: {
+          fontSize: 10
+        }
+      },
+      series: [{
+        left: 'center',
+        type: 'map',
+        name: '人数',
+        label: {
+          show: true,
+          position: 'inside',
+          fontSize: 6
+        },
+        mapType: 'china',
+        data: data.data,
+        zoom: 1.2,
+        roam: false,
+        showLegendSymbol: false,
+        emphasis: {},
+        rippleEffect: {
+          show: true,
+          brushType: 'stroke',
+          scale: 2.5,
+          period: 4
+        }
+      }]
+    }
+  }
+  
+
 function initChart1(canvas, width, height) {
     const chart = echarts.init(canvas, null, {
         width: width,
@@ -128,95 +197,95 @@ function initChart1(canvas, width, height) {
     return chart;
 }
 
-function initChart2(canvas, width, height) {
-    const chart = echarts.init(canvas, null, {
-        width: width,
-        height: height
-    });
+// function initChart2(canvas, width, height) {
+//     const chart = echarts.init(canvas, null, {
+//         width: width,
+//         height: height
+//     });
 
-    canvas.setChart(chart);
-    echarts.registerMap('henan', geoJson);
-    const option = {
-        title: {
-            text: '地域分布',
-            left: 'left'
-        },
-        tooltip: {
-            trigger: 'item'
-        },
-        visualMap: {
-            min: 0,
-            max: 100,
-            left: 'left',
-            top: 'bottom',
-            text: ['高', '低'], // 文本，默认为数值文本
-            calculable: true
-        },
-        toolbox: {
-            show: true,
-            orient: 'vertical',
-            left: 'right',
-            top: 'center',
-            feature: {
-                dataView: { readOnly: false },
-                restore: {},
-                saveAsImage: {}
-            }
-        },
-        series: [{
-            type: 'map',
-            mapType: 'henan',
-            label: {
-                normal: {
-                show: true
-                },
-                emphasis: {
-                textStyle: {
-                    color: '#fff'
-                }
-                }
-            },
-            itemStyle: {
+//     canvas.setChart(chart);
+//     echarts.registerMap('henan', geoJson);
+//     const option = {
+//         title: {
+//             text: '地域分布',
+//             left: 'left'
+//         },
+//         tooltip: {
+//             trigger: 'item'
+//         },
+//         visualMap: {
+//             min: 0,
+//             max: 100,
+//             left: 'left',
+//             top: 'bottom',
+//             text: ['高', '低'], // 文本，默认为数值文本
+//             calculable: true
+//         },
+//         toolbox: {
+//             show: true,
+//             orient: 'vertical',
+//             left: 'right',
+//             top: 'center',
+//             feature: {
+//                 dataView: { readOnly: false },
+//                 restore: {},
+//                 saveAsImage: {}
+//             }
+//         },
+//         series: [{
+//             type: 'map',
+//             mapType: 'henan',
+//             label: {
+//                 normal: {
+//                 show: true
+//                 },
+//                 emphasis: {
+//                 textStyle: {
+//                     color: '#fff'
+//                 }
+//                 }
+//             },
+//             itemStyle: {
         
-                normal: {
-                borderColor: '#389BB7',
-                areaColor: '#fff',
-                },
-                emphasis: {
-                areaColor: '#389BB7',
-                borderWidth: 0
-                }
-            },
-            animation: false,
+//                 normal: {
+//                 borderColor: '#389BB7',
+//                 areaColor: '#fff',
+//                 },
+//                 emphasis: {
+//                 areaColor: '#389BB7',
+//                 borderWidth: 0
+//                 }
+//             },
+//             animation: false,
         
-            data: [
-                { name: '郑州市', value: 100 },
-                { name: '洛阳市', value: 10 },
-                { name: '开封市', value: 20 },
-                { name: '信阳市', value: 30 },
-                { name: '驻马店市', value: 40 },
-                { name: '南阳市', value: 41 },
-                { name: '周口市', value: 15 },
-                { name: '许昌市', value: 25 },
-                { name: '平顶山市', value: 35 },
-                { name: '新乡市', value: 35 },
-                { name: '漯河市', value: 35 },
-                { name: '商丘市', value: 35 },
-                { name: '三门峡市', value: 35 },
-                { name: '济源市', value: 35 },
-                { name: '焦作市', value: 35 },
-                { name: '安阳市', value: 35 },
-                { name: '鹤壁市', value: 35 },
-                { name: '濮阳市', value: 35 },
-                { name: '开封市', value: 45 }
-            ]
-        }],
-    };
+//             data: [
+//                 { name: '郑州市', value: 100 },
+//                 { name: '洛阳市', value: 10 },
+//                 { name: '开封市', value: 20 },
+//                 { name: '信阳市', value: 30 },
+//                 { name: '驻马店市', value: 40 },
+//                 { name: '南阳市', value: 41 },
+//                 { name: '周口市', value: 15 },
+//                 { name: '许昌市', value: 25 },
+//                 { name: '平顶山市', value: 35 },
+//                 { name: '新乡市', value: 35 },
+//                 { name: '漯河市', value: 35 },
+//                 { name: '商丘市', value: 35 },
+//                 { name: '三门峡市', value: 35 },
+//                 { name: '济源市', value: 35 },
+//                 { name: '焦作市', value: 35 },
+//                 { name: '安阳市', value: 35 },
+//                 { name: '鹤壁市', value: 35 },
+//                 { name: '濮阳市', value: 35 },
+//                 { name: '开封市', value: 45 }
+//             ]
+//         }],
+//     };
     
-    chart.setOption(option);
-    chart2=chart;
-    return chart;
-}
+//     chart.setOption(option);
+//     chart2=chart;
+//     return chart;
+// }
 
 function initChart3(canvas, width, height) {
     const chart = echarts.init(canvas, null, {
@@ -310,7 +379,7 @@ Component({
             onInit: initChart1
         },
         ec2: {
-            onInit: initChart2
+            lazyLoad: true
         },
         ec3: {
             onInit: initChart3
@@ -349,6 +418,29 @@ Component({
         }
     },
     ready() {
+        this.ecComponent = this.selectComponent('#mychart-dom-bar');
+        wx.cloud.callFunction({
+          name: 'getArea'
+        }).then((res) => {
+          let result = res.result
+          let option = initOption(result)
+          this.ecComponent.init((canvas, width, height) => {
+            // 获取组件的 canvas、width、height 后的回调函数
+            // 在这里初始化图表
+            const chart = echarts.init(canvas, null, {
+              width: width,
+              height: height
+            });
+            echarts.registerMap('china', geoJson);
+            chart.setOption(option)
+            // 将图表实例绑定到 this 上，可以在其他成员函数（如 dispose）中访问
+            this.chart = chart;
+            return chart;
+          });
+        })
+  
+
+
         this.loadStatData();
         setTimeout(function () {
             console.log(chart1);

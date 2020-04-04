@@ -4,6 +4,18 @@
     "navigationBarTitleText": "关系",
     "navigationBarTextStyle": "black",
     "usingComponents": {
+        "van-button": "/miniprogram_npm/vant-weapp/button/index",
+      "van-dialog":"/miniprogram_npm/vant-weapp/dialog/index",
+      "van-popup": "/miniprogram_npm/vant-weapp/popup/index",
+      "van-area": "/miniprogram_npm/vant-weapp/area/index",
+      "van-radio": "/miniprogram_npm/vant-weapp/radio/index",
+      "van-radio-group": "/miniprogram_npm/vant-weapp/radio-group/index",
+      "van-cell": "/miniprogram_npm/vant-weapp/cell/index",
+      "van-cell-group": "/miniprogram_npm/vant-weapp/cell-group/index",
+      "van-toast": "/miniprogram_npm/vant-weapp/toast/index",
+      "van-swipe-cell": "/miniprogram_npm/vant-weapp/swipe-cell/index",
+      "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
+        
         "relation-customer": "/components/relation-customer/relation-customer",
         "relation-visitor": "/components/relation-visitor/relation-visitor"
     }

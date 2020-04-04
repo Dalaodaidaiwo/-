@@ -1,4 +1,6 @@
 <view class="page relation-main-container">
+
+
     <view class="weui-tab">
         <view class="weui-navbar">
             <block wx:for="{{tabs}}" wx:key="*this">
@@ -7,6 +9,23 @@
                 </view>
             </block>
         </view>
+ 
+
+<van-cell title="选择病人地理位置" is-link bind:click="showPopup" />
+<van-popup
+  show="{{ show }}"
+  round
+position="bottom"
+  custom-style="height: 35%"
+  bind:close="onClose"
+  
+>
+<van-area area-list="{{ areaList }}"  title="地址" bind:cancel="onClose" bind:confirm="handleCommit" />
+</van-popup>
+<van-toast id="van-toast" />
+           <van-button  type="primary" size="large" is-link bind:click="handleForm">提交</van-button>
+
+
         <view class="weui-tab__panel">
             <view class="weui-tab__content relation-tab-container" hidden="{{activeIndex != 0}}">
                 <view wx:if="{{activeIndex==0}}">
