@@ -22,7 +22,7 @@ Page({
     toEditMain(e){
       const db = wx.cloud.database()
       const _ = db.command
-      db.collection('card-items').doc("1584168811451_0.20173603248867011_33574151").update({
+      db.collection('card-items').doc("55ce5f2e-8a1b-4157-a783-f14015d7dd08").update({
         data: {
           nickName: this.data.name,
           cellphone: this.data.cellphone,
@@ -30,7 +30,6 @@ Page({
           title: this.data.title,
           realName: this.data.name,
           userId: this.data.userInfo.userId
-
         },
         success: res => {
           this.setData({

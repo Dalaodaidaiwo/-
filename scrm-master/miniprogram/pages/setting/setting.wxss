@@ -1,0 +1,141 @@
+.setting {
+  font-size: 28rpx;
+  color: #666;
+}
+.more {
+  width: 32rpx;
+  height: 32rpx;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+}
+.sub.content .item {
+  padding-left: 20rpx;
+ 
+}
+.item .right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.item .tip {
+  font-size: 22rpx;
+  color: #13227a;
+  display: flex;
+  height: 30rpx;
+  justify-content: flex-start;
+  align-items: center;
+}
+.item .tip image {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 10rpx;
+}
+.item slider {
+  width: 100%;
+  margin: 0;
+}
+.title {
+  font-size: 35rpx;
+  color: #050505;
+  margin: 26rpx 0;
+}
+.subtitle {
+  font-size: 28rpx;
+  color: #050505;
+}
+.toast .mask {
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  background: #18181a86;
+}
+.toast .wrapper {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  background: #fff;
+  font-size: 24rpx;
+  color: #333;
+  width: 60%;
+  height: 400rpx;
+  border-radius: 14rpx;
+  padding: 46rpx 28rpx;
+}
+.toast .box {
+  height: 400rpx;
+  overflow: scroll;
+}
+.t {
+  overflow: hidden;
+  padding: 0 40rpx;
+  background: #fff;
+  margin-bottom: 5rpx;
+}
+.toast .t {
+  font-size: 28rpx;
+  color: #13227a;
+  margin: 20rpx 0;
+  padding: 0;
+}
+.toast .content {
+  line-height: 1.8em;
+  text-align: justify;
+  margin-bottom: 30rpx;
+}
+.toast .content text {
+  display: block;
+  margin-bottom: 30rpx;
+}
+.wx-switch-input{width:84rpx !important;height:43rpx !important;}
+.wx-switch-input::before{width:82rpx !important;height: 38rpx !important;}
+.wx-switch-input::after{width: 38rpx !important;height: 38rpx !important;}
+
+.weui-cell__hd.head image {
+    width: 120rpx;
+    height: 120rpx;
+    margin-right: 32rpx;
+    margin-left: 0;
+    vertical-align: middle;
+}
+
+.weui-cell__hd{
+  height: 60rpx;
+  dispaly:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.mytype{
+  height: 60rpx;
+  dispaly:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.weui-cell__hd image {
+    width: 70rpx;
+    height: 70rpx;
+    margin-right: 18px;
+    margin-left: 5rpx;
+    vertical-align: middle;
+}
+
+.weui-cell__ft .qrCode image {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.weui-cell__bd .account {}

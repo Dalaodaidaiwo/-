@@ -12,6 +12,7 @@ exports.main = async(event, context) => {
   const {
     OPENID
   } = cloud.getWXContext()
+  console.log("CLOUD _ UPADTA");
   // 如果已经提交过了的再提交的话，就把上一次保存地区的人数减1
   if (event.isCommited) {
     let oldCity = await db.collection('user').where({

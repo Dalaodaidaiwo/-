@@ -52,7 +52,7 @@
             </view>
             <view class="weui-media-box weui-media-box_text">
                 <view class="weui-media-box__title weui-media-box__title_in-text">图文详情</view>
-                <rich-text nodes="{{cardDetails.richDetails}}"></rich-text>
+                <rich-text class = "Richtext" nodes="{{cardDetails.richDetails}}"></rich-text>
             </view>
         </view>
     </view>

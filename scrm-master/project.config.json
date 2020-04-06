@@ -23,11 +23,12 @@
 		},
 		"nodeModules": true
 	},
-	"appid": "wx8e5685d38e60d033",
+	"appid": "wx33a4d107cddf686c",
 	"projectname": "scrm",
 	"libVersion": "2.8.2",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {
 		"search": {
 			"current": -1,

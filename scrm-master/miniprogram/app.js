@@ -13,7 +13,7 @@ App({
         //   env 参数决定接下来小程序发起的云开发调用（wx.cloud.xxx）会默认请求到哪个云环境的资源
         //   此处请填入环境 ID, 环境 ID 可打开云控制台查看
         //   如不填则使用默认环境（第一个创建的环境）
-        env: 'first-test-yo193',
+        env: 'mycloud-gqdkf',
         traceUser: true,//自动跟踪用户
       })
     }
@@ -79,18 +79,22 @@ App({
                                 if(!res||!res.data||!res.data.length){
                                   //没有获取到数据，自动创建一条user记录和一条card记录
                                   console.log("没有获取到数据");
-                                  db.collection("users")
+                                  db.collection("users").where({
+                                    _openid: res.result.openid
+                                  })
                                     .add({
                                       data:that.globalData.userInfo,
                                       success:function(res){
                                         console.log(res);
                                       }
                                     });
-                                  db.collection("card-items")
-                                    .add({
-                                      data:that.globalData.userInfo,
-                                      success:function(res){
-                                        console.log(res);
+                                  db.collection("card-items").where({
+                                    _openid: res.result.openid
+                                  })
+                                  .add({
+                                    data:that.globalData.userInfo,
+                                    success:function(res){
+                                    console.log(res);
                                       }
                                     });
                                 }else{

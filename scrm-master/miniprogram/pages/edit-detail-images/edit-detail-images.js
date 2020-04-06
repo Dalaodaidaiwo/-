@@ -20,6 +20,10 @@ Page({
       });
     },
   toEditMain(e) {
+    wx.showToast({
+      title: '编辑成功',
+    })
+
     const that = this;
     var _this=this;
     const db = wx.cloud.database()
@@ -28,7 +32,6 @@ Page({
         success: function (res) {
           //因为success函数是一个闭包，无法通过this来setData      
           //太恶心了，原来是异步执行orz  呕
-          console.log("SEC?");
           _this.setData({
             text: res.html
           }),
@@ -51,7 +54,10 @@ Page({
             }
           })
         },
-      })
+      }),
+      wx.navigateBack({
+         delta: 1
+      });
   },
     onEditorReady() {
         const that = this;

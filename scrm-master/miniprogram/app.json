@@ -15,13 +15,14 @@
     "pages/verify/verify",
     "pages/data-main/data-main",
     "pages/poster-list/poster-list",
-    "pages/room/room"
+    "pages/room/room",
+    "pages/setting/setting"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#ff7700",
+    "navigationBarBackgroundColor": "#fffa",
     "navigationBarTitleText": "客流",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "selectedColor": "#13227a",
@@ -48,7 +49,7 @@
       },
       {
         "text": "设置",
-        "pagePath": "pages/mine/mine",
+        "pagePath": "pages/setting/setting",
         "iconPath": "assets/images/user-1.png",
         "selectedIconPath": "assets/images/user-2.png"
       }

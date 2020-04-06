@@ -18,7 +18,7 @@ Component({
             this.setData({
               userInfo: userInfo
             });
-            //console.log(this.data)
+            console.log(this.data.userInfo)
           });
             db.collection("card-items")
                 .where({
