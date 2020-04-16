@@ -4,7 +4,7 @@
     "navigationBarTitleText": "关系",
     "navigationBarTextStyle": "black",
     "usingComponents": {
-        "van-button": "/miniprogram_npm/vant-weapp/button/index",
+      "van-button": "/miniprogram_npm/vant-weapp/button/index",
       "van-dialog":"/miniprogram_npm/vant-weapp/dialog/index",
       "van-popup": "/miniprogram_npm/vant-weapp/popup/index",
       "van-area": "/miniprogram_npm/vant-weapp/area/index",
@@ -16,7 +16,7 @@
       "van-swipe-cell": "/miniprogram_npm/vant-weapp/swipe-cell/index",
       "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
         
-        "relation-customer": "/components/relation-customer/relation-customer",
-        "relation-visitor": "/components/relation-visitor/relation-visitor"
+      "relation-customer": "/components/relation-customer/relation-customer",
+      "relation-visitor": "/components/relation-visitor/relation-visitor"
     }
 }

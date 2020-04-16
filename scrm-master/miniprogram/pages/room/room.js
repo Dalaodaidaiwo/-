@@ -9,7 +9,7 @@ Page({
     requestResult: '',
     // chatRoomEnvId: 'release-f8415a',
     chatRoomCollection: 'chatroom',
-    chatRoomGroupId: 'demo',
+    chatRoomGroupId:'+otx5I49JnQ69qKmJSWxO40gZYoNw',
     chatRoomGroupName: '',
   
     // functions for used in chatroom components
@@ -17,8 +17,18 @@ Page({
     getOpenID: null,
   },
 
-  onLoad: function() {
+  onLoad: function(options) {
+    console.log(options)
+    this.setData({
+      chatRoomGroupId:options.chatid
+    })
     // 获取用户信息
+    wx.getUserInfo({
+      success: res => {
+        console.log(res);
+      }
+    }),
+
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
@@ -34,7 +44,7 @@ Page({
         }
       }
     })
-
+    
     this.setData({
       onGetUserInfo: this.onGetUserInfo,
       getOpenID: this.getOpenID,

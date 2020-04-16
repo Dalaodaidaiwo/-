@@ -5,6 +5,7 @@ Component({
         userId:String
     },
     data:{
+        recordid:"",
         loading:true,
         relations:[]
     },

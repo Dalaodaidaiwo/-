@@ -77,7 +77,6 @@
     <view class="weui-flex btn-container">
         <view class="weui-flex__item btn-view">
             <view class="placeholder">
-                
                 <button  type="primary" loading="{{loading}}" disabled="{{disabled}}" bindtap="toEditMain">
                     保存
                 </button>

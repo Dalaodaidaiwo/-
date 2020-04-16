@@ -24,19 +24,17 @@ position="bottom"
 </van-popup>
 <van-toast id="van-toast" />
            <van-button  type="primary" size="large" is-link bind:click="handleForm">提交</van-button>
-
-
         <view class="weui-tab__panel">
             <view class="weui-tab__content relation-tab-container" hidden="{{activeIndex != 0}}">
                 <view wx:if="{{activeIndex==0}}">
                     <relation-visitor></relation-visitor>
                 </view>
             </view>
-            <view class="weui-tab__content relation-tab-container" hidden="{{activeIndex != 1}}">
+            <!-- <view class="weui-tab__content relation-tab-container" hidden="{{activeIndex != 1}}">
                 <view wx:if="{{activeIndex==1}}">
                     <relation-customer></relation-customer>
                 </view>
-            </view>
+            </view> -->
         </view>
     </view>
 </view>

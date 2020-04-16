@@ -5,8 +5,13 @@ Page({
     data: {
         userId:"",
         cardDetails:{},
+        chatroomid:"",
     },
-  onLoad: function () {
+  onLoad: function (options) {
+    this.setData({
+      chatroomid:options._id
+    })
+    console.log("BALL BALL" + this.data.chatroomid);
     var _this = this;
     wx.cloud.callFunction({
       name: 'login',
@@ -17,9 +22,21 @@ Page({
           console.log("GG");
           return;
         }
-        _this.setData({
-          id: res.result.openid
-        })
+        // db.collection("actions")
+        //   .where({
+        //     _openid: that.data.id
+        //   })
+        //   .get({
+        //     success: function (res) {
+        //      console.log("DATA");
+        //      console.log(res.data[0].chatroomid);
+        //      _this.setData({
+        //        chatroomid:res.data[0].chatroomid
+        //      })
+        //      console.log("SETDATA");
+        //      console.log(_this.data.chatroomid);
+        //     }
+        //   });
       }
     });
   
@@ -28,28 +45,32 @@ Page({
     });
     this.loadCardDetails();
   },
+
   loadCardDetails:function(){
            let that=this;
-           console.log(this.data.id + "    ID");
-               db.collection("card-details")
+           for(k in this.data.cardDetails){
+             console.log(k+" "+this.data.cardDetails[k]);
+           }
+           console.log(this.data.cardDetails+"    DETAIL");
+            db.collection("actions")
                 .where({
-                  _openid:this.data.id 
+                  _id:this.data.chatroomid
                 })
                 .limit(1)
                 .get({
                     success:function(res){
+                      console.log(res.data+ " RES");
                         if(res&&res.data&&res.data.length){
                             that.setData({
-                                cardDetails:res.data[0]
+                              //  cardDetails:res.data.fromUser
                             });
                         }
                     },
                     fail:function(event){
+                      console.log("GG");
                         console.error(event);
                     }
                 });
-          console.log("CARD DETAILS");
-          console.log(this.data.cardDetails);
     },
  
     toEdit(e){

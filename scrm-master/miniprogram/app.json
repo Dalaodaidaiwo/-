@@ -16,7 +16,8 @@
     "pages/data-main/data-main",
     "pages/poster-list/poster-list",
     "pages/room/room",
-    "pages/setting/setting"
+    "pages/setting/setting",
+    "pages/showq/showq"
   ],
   "window": {
     "backgroundTextStyle": "light",

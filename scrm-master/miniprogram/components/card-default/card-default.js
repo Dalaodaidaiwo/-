@@ -13,8 +13,6 @@ Component({
             const db=wx.cloud.database();
             const _=db.command;
           app.callbacks.push((userInfo) => {
-            //console.log("hi_card-default.js")
-            //console.log(userInfo)
             this.setData({
               userInfo: userInfo
             });
