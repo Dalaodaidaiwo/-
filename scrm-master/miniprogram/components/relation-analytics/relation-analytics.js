@@ -10,74 +10,199 @@ let chart1 = null;//力导向图
 let chart2 = null;//地图
 let chart3 = null;//曲线图
 
+// function initOption(res){
+//   return {
+//     title: {
+//       text: '地域分布',
+//       left: 'left'
+//     },
+//     tooltip: {
+//       trigger: 'item',
+//       formatter:'病人数:{c0}'
+//     },
+//     position: 'bottom',
+//     visualMap: {
+//       show: true,
+//       min: 0,
+//       max: 100,
+//       left: 'left',
+//       top: 'bottom',
+//       text: ['高', '低'], // 文本，默认为数值文本
+//       calculable: true
+//     },
+//     toolbox: {
+//       show: true,
+//       orient: 'vertical',
+//       left: 'right',
+//       top: 'center',
+//       feature: {
+//         dataView: { readOnly: false },
+//         restore: {},
+//         saveAsImage: {}
+//       }
+//     },
+//     series: [{
+//       type: 'map',
+//       mapType: 'henan',
+//       label: {
+//         show: true,
+//         normal: {
+//           show: true
+//         },
+//         emphasis: {
+//           textStyle: {
+//             color: '#fff'
+//           }
+//         }
+//       },
+//       itemStyle: {
+
+//         normal: {
+//           borderColor: '#389BB7',
+//           areaColor: '#fff',
+//         },
+//         emphasis: {
+//           areaColor: '#389BB7',
+//           borderWidth: 0
+//         }
+//       },
+//       animation: false,
+
+//       data: res.data,
+//     }],
+//   }
+// }
+
 function initOption(data) {
-    return {
-      title: {
-        text: '地域分布',
-        left: 'left'
+  return {
+    title: {
+      text: '地域分布',
+      left: 'left'
+    },
+    tooltip: {
+      trigger: 'item',
+      formatter: '病人数:{c0}'
+    },
+    position: 'top',
+    visualMap: {
+      show: true,
+      type: 'piecewise',
+      min: 0,
+      max: 100,
+      align: 'left',
+      top: 'center',
+      left: 0,
+      left: 'auto',
+      inRange: {
+        color: [
+          '#ffc0b1',
+          '#ff8c71',
+          '#ef1717',
+          '#9c0505'
+        ]
       },
-      tooltip: {
-        trigger: 'item',
-        formatter: '病人数:{c0}'
-      },
-      position: 'top',
-      visualMap: {
+      pieces: [
+        { min: 1000 },
+        { min: 500, max: 999 },
+        { min: 40, max: 499 },
+        { min: 10, max: 39 },
+        { min: 1, max: 9 }
+      ],
+      orient: 'vertical',
+      showLabel: true,
+      itemWidth: 10,
+      itemHeight: 10,
+      textStyle: {
+        fontSize: 10
+      }
+    },
+    series: [{
+      left: 'center',
+      type: 'map',
+      name: '人数',
+      label: {
         show: true,
-        type: 'piecewise',
-        min: 0,
-        max: 100,
-        align: 'left',
-        top: 'center',
-        left: 0,
-        left: 'auto',
-        inRange: {
-          color: [
-            '#ffc0b1',
-            '#ff8c71',
-            '#ef1717',
-            '#9c0505'
-          ]
-        },
-        pieces: [
-          { min: 1000 },
-          { min: 500, max: 999 },
-          { min: 40, max: 499 },
-          { min: 10, max: 39 },
-          { min: 1, max: 9 }
-        ],
-        orient: 'vertical',
-        showLabel: true,
-        itemWidth: 10,
-        itemHeight: 10,
-        textStyle: {
-          fontSize: 10
-        }
+        position: 'inside',
+        fontSize: 6
       },
-      series: [{
-        left: 'center',
-        type: 'map',
-        name: '人数',
-        label: {
-          show: true,
-          position: 'inside',
-          fontSize: 6
+      mapType: 'china',
+      data: data.data,
+      zoom: 1.2,
+      roam: false,
+      showLegendSymbol: false,
+      emphasis: {},
+      rippleEffect: {
+        show: true,
+        brushType: 'stroke',
+        scale: 2.5,
+        period: 4
+      }
+    }]
+  }
+}
+
+function initOption_pie(data) {
+    return {
+        title: {
+            text: '分布数据',
+            left: 'left'
         },
-        mapType: 'china',
-        data: data.data,
-        zoom: 1.2,
-        roam: false,
-        showLegendSymbol: false,
-        emphasis: {},
-        rippleEffect: {
-          show: true,
-          brushType: 'stroke',
-          scale: 2.5,
-          period: 4
-        }
-      }]
+        backgroundColor: "#ffffff",
+        color: ["#37A2DA", "#32C5E9", "#67E0E3", "#91F2DE", "#FFDB5C", "#FF9F7F"],
+        series: [{
+          label: {
+            normal: {
+              fontSize: 14
+            }
+          },
+          type: 'pie',
+          center: ['50%', '50%'],
+          radius: ['40%', '60%'],
+          data: data.data
+        }]
+      }
+  }
+
+  function initOption_line(data) {
+    return {
+        title: {
+            text: '统计数据',
+            left: 'left'
+        },
+        color: ["#37A2DA", "#67E0E3", "#9FE6B8"],
+        legend: {
+            data: ['预约', '治疗中', '已治愈'],
+            top: 25,
+            left: 'center',
+            backgroundColor: 'white',
+            z: 100
+          },
+        grid: {
+            containLabel: true
+        },
+        tooltip: {
+            show: true,
+            trigger: 'axis'
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+            // show: false
+        },
+        yAxis: {
+            x: 'center',
+            type: 'value',
+            splitLine: {
+            lineStyle: {
+                type: 'dashed'
+            }
+            }
+            // show: false
+        },
+        series: data.data
     }
   }
-  
 
 function initChart1(canvas, width, height) {
     const chart = echarts.init(canvas, null, {
@@ -202,89 +327,97 @@ function initChart1(canvas, width, height) {
 //         width: width,
 //         height: height
 //     });
+//   canvas.setChart(chart);
+//   echarts.registerMap('henan', geoJson);
+//   const option = {
+//     title: {
+//       text: '地域分布',
+//       left: 'left'
+//     },
+//     tooltip: {
+//       trigger: 'item'
+//     },
+//     visualMap: {
+//       min: 0,
+//       max: 100,
+//       left: 'left',
+//       top: 'bottom',
+//       text: ['高', '低'], // 文本，默认为数值文本
+//       calculable: true
+//     },
+//     toolbox: {
+//       show: true,
+//       orient: 'vertical',
+//       left: 'right',
+//       top: 'center',
+//       feature: {
+//         dataView: { readOnly: false },
+//         restore: {},
+//         saveAsImage: {}
+//       }
+//     },
+//     series: [{
+//       type: 'map',
+//       mapType: 'henan',
+//       label: {
+//         normal: {
+//           show: true
+//         },
+//         emphasis: {
+//           textStyle: {
+//             color: '#fff'
+//           }
+//         }
+//       },
+//       itemStyle: {
 
-//     canvas.setChart(chart);
-//     echarts.registerMap('henan', geoJson);
-//     const option = {
-//         title: {
-//             text: '地域分布',
-//             left: 'left'
+//         normal: {
+//           borderColor: '#389BB7',
+//           areaColor: '#fff',
 //         },
-//         tooltip: {
-//             trigger: 'item'
-//         },
-//         visualMap: {
-//             min: 0,
-//             max: 100,
-//             left: 'left',
-//             top: 'bottom',
-//             text: ['高', '低'], // 文本，默认为数值文本
-//             calculable: true
-//         },
-//         toolbox: {
-//             show: true,
-//             orient: 'vertical',
-//             left: 'right',
-//             top: 'center',
-//             feature: {
-//                 dataView: { readOnly: false },
-//                 restore: {},
-//                 saveAsImage: {}
-//             }
-//         },
-//         series: [{
-//             type: 'map',
-//             mapType: 'henan',
-//             label: {
-//                 normal: {
-//                 show: true
-//                 },
-//                 emphasis: {
-//                 textStyle: {
-//                     color: '#fff'
-//                 }
-//                 }
-//             },
-//             itemStyle: {
-        
-//                 normal: {
-//                 borderColor: '#389BB7',
-//                 areaColor: '#fff',
-//                 },
-//                 emphasis: {
-//                 areaColor: '#389BB7',
-//                 borderWidth: 0
-//                 }
-//             },
-//             animation: false,
-        
-//             data: [
-//                 { name: '郑州市', value: 100 },
-//                 { name: '洛阳市', value: 10 },
-//                 { name: '开封市', value: 20 },
-//                 { name: '信阳市', value: 30 },
-//                 { name: '驻马店市', value: 40 },
-//                 { name: '南阳市', value: 41 },
-//                 { name: '周口市', value: 15 },
-//                 { name: '许昌市', value: 25 },
-//                 { name: '平顶山市', value: 35 },
-//                 { name: '新乡市', value: 35 },
-//                 { name: '漯河市', value: 35 },
-//                 { name: '商丘市', value: 35 },
-//                 { name: '三门峡市', value: 35 },
-//                 { name: '济源市', value: 35 },
-//                 { name: '焦作市', value: 35 },
-//                 { name: '安阳市', value: 35 },
-//                 { name: '鹤壁市', value: 35 },
-//                 { name: '濮阳市', value: 35 },
-//                 { name: '开封市', value: 45 }
-//             ]
-//         }],
-//     };
-    
-//     chart.setOption(option);
-//     chart2=chart;
-//     return chart;
+//         emphasis: {
+//           areaColor: '#389BB7',
+//           borderWidth: 0
+//         }
+//       },
+//       animation: false,
+
+//       data: [
+//         { name: '郑州市', value: 100 },
+//         { name: '洛阳市', value: 10 },
+//         { name: '开封市', value: 20 },
+//         { name: '信阳市', value: 30 },
+//         { name: '驻马店市', value: 40 },
+//         { name: '南阳市', value: 41 },
+//         { name: '周口市', value: 15 },
+//         { name: '许昌市', value: 25 },
+//         { name: '平顶山市', value: 35 },
+//         { name: '新乡市', value: 35 },
+//         { name: '漯河市', value: 35 },
+//         { name: '商丘市', value: 35 },
+//         { name: '三门峡市', value: 35 },
+//         { name: '济源市', value: 35 },
+//         { name: '焦作市', value: 35 },
+//         { name: '安阳市', value: 35 },
+//         { name: '鹤壁市', value: 35 },
+//         { name: '濮阳市', value: 35 },
+//         { name: '开封市', value: 45 }
+//       ]
+//     }],
+//   };
+//   let option1={};
+// wx.cloud.callFunction({
+//   name:'getArea'
+// }).then((res)=>{
+// let result=res.result
+// option1 = initOption(result);
+//   console.log("2")
+//   console.log(option1)
+//   chart.setOption(option1);
+
+//   chart = chart;
+//   return chart;
+// });
 // }
 
 function initChart3(canvas, width, height) {
@@ -323,17 +456,17 @@ function initChart3(canvas, width, height) {
             // show: false
         },
         series: [{
-            name: 'A',
+            name: '预约',
             type: 'line',
             smooth: true,
             data: [18, 36, 65, 30, 78, 40, 33]
         }, {
-            name: 'B',
+            name: '治疗中',
             type: 'line',
             smooth: true,
             data: [12, 50, 51, 35, 70, 30, 20]
         }, {
-            name: 'C',
+            name: '已治愈',
             type: 'line',
             smooth: true,
             data: [10, 30, 31, 50, 40, 20, 10]
@@ -343,6 +476,49 @@ function initChart3(canvas, width, height) {
     chart3=chart;
     return chart;
 }
+
+function initChart(canvas, width, height, dpr) {
+    const chart = echarts.init(canvas, null, {
+      width: width,
+      height: height,
+      devicePixelRatio: dpr // new
+    });
+    canvas.setChart(chart);
+  
+    var option = {
+      backgroundColor: "#ffffff",
+      color: ["#37A2DA", "#32C5E9", "#67E0E3", "#91F2DE", "#FFDB5C", "#FF9F7F"],
+      series: [{
+        label: {
+          normal: {
+            fontSize: 14
+          }
+        },
+        type: 'pie',
+        center: ['50%', '50%'],
+        radius: ['40%', '60%'],
+        data: [{
+          value: 55,
+          name: '北京'
+        }, {
+          value: 20,
+          name: '武汉'
+        }, {
+          value: 10,
+          name: '杭州'
+        }, {
+          value: 20,
+          name: '广州'
+        }, {
+          value: 38,
+          name: '上海'
+        }]
+      }]
+    };
+  
+    chart.setOption(option);
+    return chart;
+  }
 
 Component({
     properties:{
@@ -375,14 +551,17 @@ Component({
                 count:0
             }
         ],
+        ec: {
+            lazyLoad: true
+        },
         ec1: {
             onInit: initChart1
         },
         ec2: {
-            lazyLoad: true
+          lazyLoad: true
         },
         ec3: {
-            onInit: initChart3
+            lazyLoad: true
         },
         userInfo:{}
     },
@@ -418,34 +597,76 @@ Component({
         }
     },
     ready() {
-        this.ecComponent = this.selectComponent('#mychart-dom-bar');
-        wx.cloud.callFunction({
-          name: 'getArea'
-        }).then((res) => {
-          let result = res.result
-          let option = initOption(result)
-          this.ecComponent.init((canvas, width, height) => {
-            // 获取组件的 canvas、width、height 后的回调函数
-            // 在这里初始化图表
-            const chart = echarts.init(canvas, null, {
-              width: width,
-              height: height
-            });
-            echarts.registerMap('china', geoJson);
-            chart.setOption(option)
-            // 将图表实例绑定到 this 上，可以在其他成员函数（如 dispose）中访问
-            this.chart = chart;
-            return chart;
+      this.ecComponent = this.selectComponent('#mychart-dom-bar');
+      wx.cloud.callFunction({
+        name: 'getArea'
+      }).then((res) => {
+        let result = res.result
+        let option = initOption(result)
+        this.ecComponent.init((canvas, width, height) => {
+          // 获取组件的 canvas、width、height 后的回调函数
+          // 在这里初始化图表
+          const chart = echarts.init(canvas, null, {
+            width: width,
+            height: height
           });
-        })
-  
+          echarts.registerMap('china', geoJson);
+          chart.setOption(option)
+          // 将图表实例绑定到 this 上，可以在其他成员函数（如 dispose）中访问
+          //this.chart = chart;
+          return chart;
+        });
+      })
+      
+      this.ecComponent_pie = this.selectComponent('#mychart-dom-pie');
+      wx.cloud.callFunction({
+        name: 'getArea'
+      }).then((res) => {
+        let result = res.result
+        let option_pie = initOption_pie(result)
+        this.ecComponent_pie.init((canvas, width, height) => {
+          // 获取组件的 canvas、width、height 后的回调函数
+          // 在这里初始化图表
+          const chart = echarts.init(canvas, null, {
+            width: width,
+            height: height
+          });
+          canvas.setChart(chart);
+          chart.setOption(option_pie)
+          // 将图表实例绑定到 this 上，可以在其他成员函数（如 dispose）中访问
+          this.chart = chart;
+          return chart;
+        });
+      })
 
-
+      this.ecComponent_line = this.selectComponent('#mychart-dom-line');
+      wx.cloud.callFunction({
+        name: 'getNum'
+      }).then((res) => {
+        let result = res.result
+        //console.log("yeah")
+        //console.log(result)
+        let option_line = initOption_line(result)
+        this.ecComponent_line.init((canvas, width, height) => {
+          // 获取组件的 canvas、width、height 后的回调函数
+          // 在这里初始化图表
+          const chart = echarts.init(canvas, null, {
+            width: width,
+            height: height
+          });
+          canvas.setChart(chart);
+          chart.setOption(option_line)
+          // 将图表实例绑定到 this 上，可以在其他成员函数（如 dispose）中访问
+          this.chart = chart;
+          return chart;
+        });
+        
+      })
         this.loadStatData();
         setTimeout(function () {
-            console.log(chart1);
-            console.log(chart2);
-            console.log(chart3);
+            // console.log(chart1);
+            // console.log(chart2);
+            // console.log(chart3);
         }, 2000);
     }
 })

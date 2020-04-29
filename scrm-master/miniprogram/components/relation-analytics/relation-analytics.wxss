@@ -20,7 +20,7 @@
 
 .relation-analytics-container .chart-container {
     width: 100%;
-    height: 600rpx;
+    height: 750rpx;
     margin-bottom: 20rpx;
 }
 

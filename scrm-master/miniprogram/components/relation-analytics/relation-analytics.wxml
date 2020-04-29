@@ -14,10 +14,19 @@
     <view class="weui-panel">
         <view class="weui-panel__bd">
             <view class="chart-container">
+                <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}"></ec-canvas>
+            </view>
+        </view>
+    </view>
+<!--关系分析
+    <view class="weui-panel">
+        <view class="weui-panel__bd">
+            <view class="chart-container">
                 <ec-canvas ec="{{ ec1 }}"></ec-canvas>
             </view>
         </view>
     </view>
+    -->
     <view class="weui-panel">
         <view class="weui-panel__bd">
             <view class="chart-container">
@@ -28,7 +37,7 @@
     <view class="weui-panel">
         <view class="weui-panel__bd">
             <view class="chart-container">
-                <ec-canvas ec="{{ ec3 }}"></ec-canvas>
+                <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec3 }}"></ec-canvas>
             </view>
         </view>
     </view>

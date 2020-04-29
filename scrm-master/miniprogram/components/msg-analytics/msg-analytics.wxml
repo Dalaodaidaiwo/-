@@ -1,21 +1,23 @@
 <view class="msg-analytics-container">
-    <view class="weui-panel">
-        <view class="weui-panel__bd">
-            <view class="weui-grids">
-                <block wx:for="{{statData}}">
-                    <navigator url="" class="weui-grid" hover-class="weui-grid_active">
-                        <view class="data">{{item.count}}</view>
-                        <view class="weui-grid__label">{{item.label}}</view>
-                    </navigator>
-                </block>
-            </view>
-        </view>
-    </view>
-    <view class="weui-panel">
-        <view class="weui-panel__bd">
-            <view class="chart-container">
-                <ec-canvas ec="{{ ec3 }}"></ec-canvas>
-            </view>
-        </view>
-    </view>
+<van-toast id="van-toast1" />
+<van-dialog id="van-dialog" />
+  <van-tabs animated>
+    <van-tab title="病人情况">
+      <van-picker columns="{{ columns }}" bind:change="onChange" />
+      <van-cell-group>
+        <van-field value="{{ patient }}" required clearable label="人数" icon="music-o" placeholder="请输入人数" bindblur="onFieldChange" />
+      </van-cell-group>
+      <van-button type="primary" size="large" is-link bind:click="handleForm1">提交</van-button>
+    </van-tab>
+    <van-tab title="病人地理位置">
+      <van-cell title="选择病人地理位置" is-link bind:click="showPopup" />
+        <van-popup show="{{ show }}" round position="bottom" custom-style="height: 35%" bind:close="onClose">
+            <van-area area-list="{{ areaList }}" title="地址" bind:cancel="onClose" bind:confirm="handleCommit" />
+        </van-popup>
+        
+        <van-button type="primary" size="large" is-link bind:click="handleForm">提交</van-button>
+        
+    </van-tab>
+  </van-tabs>
+ 
 </view>
