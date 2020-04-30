@@ -6,72 +6,7 @@ import * as echarts from "../ec-canvas/echarts";
 import geoJson from './mapData.js';
 const app = getApp();
 
-let chart1 = null;//力导向图
-let chart2 = null;//地图
-let chart3 = null;//曲线图
 
-// function initOption(res){
-//   return {
-//     title: {
-//       text: '地域分布',
-//       left: 'left'
-//     },
-//     tooltip: {
-//       trigger: 'item',
-//       formatter:'病人数:{c0}'
-//     },
-//     position: 'bottom',
-//     visualMap: {
-//       show: true,
-//       min: 0,
-//       max: 100,
-//       left: 'left',
-//       top: 'bottom',
-//       text: ['高', '低'], // 文本，默认为数值文本
-//       calculable: true
-//     },
-//     toolbox: {
-//       show: true,
-//       orient: 'vertical',
-//       left: 'right',
-//       top: 'center',
-//       feature: {
-//         dataView: { readOnly: false },
-//         restore: {},
-//         saveAsImage: {}
-//       }
-//     },
-//     series: [{
-//       type: 'map',
-//       mapType: 'henan',
-//       label: {
-//         show: true,
-//         normal: {
-//           show: true
-//         },
-//         emphasis: {
-//           textStyle: {
-//             color: '#fff'
-//           }
-//         }
-//       },
-//       itemStyle: {
-
-//         normal: {
-//           borderColor: '#389BB7',
-//           areaColor: '#fff',
-//         },
-//         emphasis: {
-//           areaColor: '#389BB7',
-//           borderWidth: 0
-//         }
-//       },
-//       animation: false,
-
-//       data: res.data,
-//     }],
-//   }
-// }
 
 function initOption(data) {
   return {
@@ -152,7 +87,7 @@ function initOption_pie(data) {
         series: [{
           label: {
             normal: {
-              fontSize: 14
+              fontSize: 12
             }
           },
           type: 'pie',
@@ -322,235 +257,16 @@ function initChart1(canvas, width, height) {
     return chart;
 }
 
-// function initChart2(canvas, width, height) {
-//     const chart = echarts.init(canvas, null, {
-//         width: width,
-//         height: height
-//     });
-//   canvas.setChart(chart);
-//   echarts.registerMap('henan', geoJson);
-//   const option = {
-//     title: {
-//       text: '地域分布',
-//       left: 'left'
-//     },
-//     tooltip: {
-//       trigger: 'item'
-//     },
-//     visualMap: {
-//       min: 0,
-//       max: 100,
-//       left: 'left',
-//       top: 'bottom',
-//       text: ['高', '低'], // 文本，默认为数值文本
-//       calculable: true
-//     },
-//     toolbox: {
-//       show: true,
-//       orient: 'vertical',
-//       left: 'right',
-//       top: 'center',
-//       feature: {
-//         dataView: { readOnly: false },
-//         restore: {},
-//         saveAsImage: {}
-//       }
-//     },
-//     series: [{
-//       type: 'map',
-//       mapType: 'henan',
-//       label: {
-//         normal: {
-//           show: true
-//         },
-//         emphasis: {
-//           textStyle: {
-//             color: '#fff'
-//           }
-//         }
-//       },
-//       itemStyle: {
 
-//         normal: {
-//           borderColor: '#389BB7',
-//           areaColor: '#fff',
-//         },
-//         emphasis: {
-//           areaColor: '#389BB7',
-//           borderWidth: 0
-//         }
-//       },
-//       animation: false,
 
-//       data: [
-//         { name: '郑州市', value: 100 },
-//         { name: '洛阳市', value: 10 },
-//         { name: '开封市', value: 20 },
-//         { name: '信阳市', value: 30 },
-//         { name: '驻马店市', value: 40 },
-//         { name: '南阳市', value: 41 },
-//         { name: '周口市', value: 15 },
-//         { name: '许昌市', value: 25 },
-//         { name: '平顶山市', value: 35 },
-//         { name: '新乡市', value: 35 },
-//         { name: '漯河市', value: 35 },
-//         { name: '商丘市', value: 35 },
-//         { name: '三门峡市', value: 35 },
-//         { name: '济源市', value: 35 },
-//         { name: '焦作市', value: 35 },
-//         { name: '安阳市', value: 35 },
-//         { name: '鹤壁市', value: 35 },
-//         { name: '濮阳市', value: 35 },
-//         { name: '开封市', value: 45 }
-//       ]
-//     }],
-//   };
-//   let option1={};
-// wx.cloud.callFunction({
-//   name:'getArea'
-// }).then((res)=>{
-// let result=res.result
-// option1 = initOption(result);
-//   console.log("2")
-//   console.log(option1)
-//   chart.setOption(option1);
 
-//   chart = chart;
-//   return chart;
-// });
-// }
-
-function initChart3(canvas, width, height) {
-    const chart = echarts.init(canvas, null, {
-        width: width,
-        height: height
-    });
-    canvas.setChart(chart);
-    var option = {
-        title: {
-            text: '统计数据',
-            left: 'left'
-        },
-        color: ["#37A2DA", "#67E0E3", "#9FE6B8"],
-        grid: {
-            containLabel: true
-        },
-        tooltip: {
-            show: true,
-            trigger: 'axis'
-        },
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-            // show: false
-        },
-        yAxis: {
-            x: 'center',
-            type: 'value',
-            splitLine: {
-            lineStyle: {
-                type: 'dashed'
-            }
-            }
-            // show: false
-        },
-        series: [{
-            name: '预约',
-            type: 'line',
-            smooth: true,
-            data: [18, 36, 65, 30, 78, 40, 33]
-        }, {
-            name: '治疗中',
-            type: 'line',
-            smooth: true,
-            data: [12, 50, 51, 35, 70, 30, 20]
-        }, {
-            name: '已治愈',
-            type: 'line',
-            smooth: true,
-            data: [10, 30, 31, 50, 40, 20, 10]
-        }]
-    };
-    chart.setOption(option);
-    chart3=chart;
-    return chart;
-}
-
-function initChart(canvas, width, height, dpr) {
-    const chart = echarts.init(canvas, null, {
-      width: width,
-      height: height,
-      devicePixelRatio: dpr // new
-    });
-    canvas.setChart(chart);
-  
-    var option = {
-      backgroundColor: "#ffffff",
-      color: ["#37A2DA", "#32C5E9", "#67E0E3", "#91F2DE", "#FFDB5C", "#FF9F7F"],
-      series: [{
-        label: {
-          normal: {
-            fontSize: 14
-          }
-        },
-        type: 'pie',
-        center: ['50%', '50%'],
-        radius: ['40%', '60%'],
-        data: [{
-          value: 55,
-          name: '北京'
-        }, {
-          value: 20,
-          name: '武汉'
-        }, {
-          value: 10,
-          name: '杭州'
-        }, {
-          value: 20,
-          name: '广州'
-        }, {
-          value: 38,
-          name: '上海'
-        }]
-      }]
-    };
-  
-    chart.setOption(option);
-    return chart;
-  }
 
 Component({
     properties:{
         userId:String
     },
     data: {
-        statData: [
-            {
-                label:"客户总数",
-                count:0
-            },
-            {
-                label:"本周新增",
-                count:0
-            },
-            {
-                label:"本月新增",
-                count:0
-            },
-            {
-                label:"访客总数",
-                count:0
-            },
-            {
-                label:"今日来访",
-                count:0
-            },
-            {
-                label:"本月来访",
-                count:0
-            }
-        ],
+        
         ec: {
             lazyLoad: true
         },
@@ -567,33 +283,7 @@ Component({
     },
     methods:{
         loadStatData(){
-            let that=this;
-            const db=wx.cloud.database();
-            const _=db.command;
-            let userInfo=app.globalData.userInfo;
-            console.log(userInfo);
-            this.setData({
-                userInfo:userInfo
-            });
-            db.collection("statistics-analytics")
-                .where({
-                    userId:userInfo._id,
-                    type:"relation"
-                })
-                .orderBy("dispaly_order","ASC")
-                .get({
-                    success:function(res){
-                        console.log(res);
-                        if(res&&res.data&&res.data.length){
-                            that.setData({
-                                statData:res.data
-                            });
-                        }
-                    },
-                    fail:function(event){
-                        console.error(event);
-                    }
-                });
+          
         }
     },
     ready() {

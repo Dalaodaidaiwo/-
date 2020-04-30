@@ -3,7 +3,7 @@ let sliderWidth = 96;
 
 Page({
     data: {
-        tabs: ["关系分析", "消息分析"],
+        tabs: ["分析数据", "提交数据"],
         activeIndex: 0,
         sliderOffset: 0,
         sliderLeft: 0
