@@ -29,6 +29,7 @@ Component({
                             that.setData({
                                 cardInfo:res.data[0]
                             });
+                            console.log("card Info", res.data[0]);
                         }
                     },
                     fail:function(event){
