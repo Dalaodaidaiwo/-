@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/setting/setting",
     "pages/index/index",
     "pages/logs/logs",
     "pages/mine/mine",
@@ -8,15 +9,14 @@
     "pages/edit-main/edit-main",
     "pages/edit-basic-info/edit-basic-info",
     "pages/edit-company-info/edit-company-info",
-    "pages/choose-card-template/choose-card-template",
     "pages/edit-detail-images/edit-detail-images",
     "pages/relation-main/relation-main",
     "pages/share-main/share-main",
-    "pages/verify/verify",
+   
     "pages/data-main/data-main",
     "pages/poster-list/poster-list",
     "pages/room/room",
-    "pages/setting/setting",
+    
     "pages/showq/showq"
   ],
   "window": {

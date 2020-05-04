@@ -1,6 +1,5 @@
 
 <view>
-<button open-type="getUserInfo">获取用户信息</button>
 <swiper class ="swiper-image" indicator-dots="true" height:10rpx autoplay="true" circular="true">
 <swiper-item>
 <navigator url="/pages/showq/showq"><image src='/assets/images/t1.png'></image></navigator>

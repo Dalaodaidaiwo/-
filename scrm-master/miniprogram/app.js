@@ -1,7 +1,3 @@
-/**
- * @author 大漠穷秋
- * @date 2019-09-07 15:42:16
- */
 App({
   onLaunch: function () {
     let that=this;
@@ -13,7 +9,7 @@ App({
         //   env 参数决定接下来小程序发起的云开发调用（wx.cloud.xxx）会默认请求到哪个云环境的资源
         //   此处请填入环境 ID, 环境 ID 可打开云控制台查看
         //   如不填则使用默认环境（第一个创建的环境）
-        env: 'mycloud-gqdkf',
+        env: 'first-test-yo193',
         traceUser: true,//自动跟踪用户
       })
     }
@@ -39,7 +35,16 @@ App({
     // 获取用户信息
     wx.getSetting({
       success: res => {
-        console.log(res);
+        
+        if (!res.authSetting['scope.userInfo']){
+          
+          wx.showModal({
+            title: '提示',
+            content: '需要开启权限，请点击设置页上方的按钮授权',
+          })
+          
+   
+        }
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
@@ -48,7 +53,7 @@ App({
               that.globalData.userInfo = res.userInfo
               that.globalData.userInfo.avatar=res.userInfo.avatarUrl;
               that.globalData.userInfo.creatTime=new Date();
-
+              
               //TODO:写入或者更新Session
 
               /**
@@ -59,7 +64,7 @@ App({
               wx.cloud.callFunction({
                   name:'login',
                   complete:res=>{
-                      console.log(res);
+                      //console.log(res);
                       if(!res||!res.result||!res.result.openid){
                         //登录失败
                         console.log("调用失败");

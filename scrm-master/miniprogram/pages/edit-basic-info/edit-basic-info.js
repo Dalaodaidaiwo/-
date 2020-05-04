@@ -1,77 +1,97 @@
 const app = getApp();
 Page({
-    data: {
-      userInfo: {},
-      address: "",
-      name: "",
-      school: "",
-      speciality: "",
-      hometown: "",
-      companyName: "",
-      cellphone: "",
-      title: "",
-      openid: "",
-      counterId: "",
-      userId: "" 
-    },
-    onLoad: function () {
-      this.setData({
-        userInfo: app.globalData.userInfo
-      });
-    },
-    toEditMain(e){
-      const db = wx.cloud.database()
-      const _ = db.command
-      db.collection('card-items').doc("55ce5f2e-8a1b-4157-a783-f14015d7dd08").update({
-        data: {
-          nickName: this.data.name,
-          cellphone: this.data.cellphone,
-          companyName: this.data.companyName,
-          title: this.data.title,
-          realName: this.data.name,
-          userId: this.data.userInfo.userId
-        },
-        success: res => {
-          this.setData({
-            name: this.data.name,
-            cellphone: this.data.cellphone,
-            companyName: this.data.companyName,
-            title: this.data.title,
-            realName: this.data.name
-          })
-        },
-        fail: err => {
-          icon: 'none',
-            console.error('[数据库] [更新记录] 失败：', err)
-        }
-      }),
+  data: {
+    userInfo: {},
+    address: "",
+    name: "",
+    school: "",
+    speciality: "",
+    hometown: "",
+    companyName: "",
+    cellphone: "",
+    title: "",
+    openid: "",
+    counterId: "",
+    userId: ""
+  },
+  onLoad: function () {
+    this.setData({
+      userInfo: app.globalData.userInfo
+    });
+  },
+  async toEditMain(e) {
+    const db = wx.cloud.database()
+    const _ = db.command
+    
+    await wx.cloud.callFunction({
+      name: 'editMsg',
+      data: {
+        nickName: this.data.name,
+        cellphone: this.data.cellphone,
+        companyName: this.data.companyName,
+        title: this.data.title,
 
-        db.collection('card-details').doc("31812d39-2849-483e-b344-8ea364c507ce").update({
-         data: {
-            hometown: this.data.hometown,
-            speciality: this.data.speciality,
-            school: this.data.school,
-            userId:  this.data.userInfo.userId
+        hometown: this.data.hometown,
+        speciality: this.data.speciality,
+        school: this.data.school,
+        openid: app.globalData.userInfo.openid
+      }
+    }).then((res) => {
+      console.log("3/4")
+      console.log(res)
+      console.log("3/4")
+    })
 
-          },
-          success: res => {
-            this.setData({
-              hometown: this.data.hometown,
-              speciality: this.data.speciality,
-              school: this.data.school
-            })
-            console.log("DB OKK");
-          },
-          fail: err => {
-            icon: 'none',
-              console.error('[数据库] [更新记录] 失败：', err)
-          }
+    // db.collection('card-items').doc("55ce5f2e-8a1b-4157-a783-f14015d7dd08").update({
+    //   data: {
+    //     nickName: this.data.name,
+    //     cellphone: this.data.cellphone,
+    //     companyName: this.data.companyName,
+    //     title: this.data.title,
+    //     realName: this.data.name,
+    //     userId: this.data.userInfo.userId
+    //   },
+    //   success: res => {
+    //     this.setData({
+    //       name: this.data.name,
+    //       cellphone: this.data.cellphone,
+    //       companyName: this.data.companyName,
+    //       title: this.data.title,
+    //       realName: this.data.name
+    //     })
+    //   },
+    //   fail: err => {
+    //     icon: 'none',
+    //       console.error('[数据库] [更新记录] 失败：', err)
+    //   }
+    // }),
 
-        }),
-        wx.navigateBack({
-            delta: 1
-        });
-    },
+    //   db.collection('card-details').doc("31812d39-2849-483e-b344-8ea364c507ce").update({
+    //    data: {
+    //       hometown: this.data.hometown,
+    //       speciality: this.data.speciality,
+    //       school: this.data.school,
+    //       userId:  this.data.userInfo.userId
+
+    //     },
+    //     success: res => {
+    //       this.setData({
+    //         hometown: this.data.hometown,
+    //         speciality: this.data.speciality,
+    //         school: this.data.school
+    //       })
+    //       console.log("DB OKK");
+    //     },
+    //     fail: err => {
+    //       icon: 'none',
+    //         console.error('[数据库] [更新记录] 失败：', err)
+    //     }
+
+    //   }),
+    wx.navigateBack({
+      delta: 1
+    });
+  },
   bindcompanyNameInput: function (e) {
     this.setData({
       companyName: e.detail.value
@@ -106,7 +126,7 @@ Page({
   },
   bindspecialityInput: function (e) {
     this.setData({
-     speciality: e.detail.value
+      speciality: e.detail.value
     })
     console.log(e.detail.value)
     console.log(e)
@@ -118,22 +138,22 @@ Page({
     console.log(e.detail.value)
     console.log(e)
   },
-    chooseLocation(e){
-        let that=this;
-        wx.getLocation({
-            type: "gcj2",
-            success: function(res){
-                wx.chooseLocation({
-                    latitude: res.latitude,
-                    longitude: res.longitude,
-                    success:function(res){
-                        console.log(res);
-                        that.setData({
-                            address:res.address
-                        });
-                    }
-                })
-            }
-        });
-    }
+  chooseLocation(e) {
+    let that = this;
+    wx.getLocation({
+      type: "gcj2",
+      success: function (res) {
+        wx.chooseLocation({
+          latitude: res.latitude,
+          longitude: res.longitude,
+          success: function (res) {
+            console.log(res);
+            that.setData({
+              address: res.address
+            });
+          }
+        })
+      }
+    });
+  }
 })

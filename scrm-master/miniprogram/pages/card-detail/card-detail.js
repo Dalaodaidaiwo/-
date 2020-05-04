@@ -29,6 +29,26 @@ Page({
     this.loadCardDetails();
   },
   loadCardDetails:function(){
+    let that=this;
+    const db=wx.cloud.database();
+    const _=db.command;
+    db.collection("card-details")
+    .where({
+        _openid:this.data._openid
+    })
+    .limit(1)
+    .get({
+        success:function(res){
+            if(res&&res.data&&res.data.length){
+                that.setData({
+                    cardDetails:res.data[0]
+                });
+            }
+        },
+        fail:function(event){
+            console.error(event);
+        }
+    });
     /*
            let that=this;
            console.log(this.data.id + "    ID");

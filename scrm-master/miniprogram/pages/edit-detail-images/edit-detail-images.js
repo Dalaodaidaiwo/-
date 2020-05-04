@@ -19,7 +19,7 @@ Page({
         userInfo: app.globalData.userInfo
       });
     },
-  toEditMain(e) {
+  async toEditMain(e) {
     wx.showToast({
       title: '编辑成功',
     })
@@ -28,33 +28,45 @@ Page({
     var _this=this;
     const db = wx.cloud.database()
     const _ = db.command;
+    
+    
       that.editorCtx.getContents({
         success: function (res) {
+          //  *nice ↓
           //因为success函数是一个闭包，无法通过this来setData      
           //太恶心了，原来是异步执行orz  呕
           _this.setData({
             text: res.html
-          }),
+          })
          //console.log(_this.data.text);
-         // console.log("First?????");
-         // console.log("NOW::", _this.data.text);
-          db.collection('card-details').doc("31812d39-2849-483e-b344-8ea364c507ce").update({
+          //console.log("First?????");
+           wx.cloud.callFunction({
+            name: 'editRichDetails',
             data: {
-              richDetails: _this.data.text
-            },
-            success: res => {
-              this.setData({
-                richDetails: _this.data.text
-              })
-              console.log("DB UPATAE OKK");
-            },
-            fail: err => {
-              icon: 'none',
-                console.error('[数据库] [更新记录] 失败：', err)
+              richDetails: _this.data.text,
+              openid: app.globalData.userInfo.openid
             }
           })
-        },
+         // console.log("NOW::", _this.data.text);
+          // db.collection('card-details').doc("31812d39-2849-483e-b344-8ea364c507ce").update({
+          //   data: {
+          //     richDetails: _this.data.text
+          //   },
+          //   success: res => {
+          //     this.setData({
+          //       richDetails: _this.data.text
+          //     })
+          //     console.log("DB UPATAE OKK");
+          //   },
+          //   fail: err => {
+          //     icon: 'none',
+          //       console.error('[数据库] [更新记录] 失败：', err)
+          //   }
+          // })
+        }
       }),
+      
+     
       wx.navigateBack({
          delta: 1
       });

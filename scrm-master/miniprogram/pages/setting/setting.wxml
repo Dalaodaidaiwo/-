@@ -1,5 +1,7 @@
 <view class='setting'>
   <!-- 自定义 -->
+  
+  <van-button color="#7232dd" plain open-type="getUserInfo" block>点击获取用户信息</van-button>
   <view class='s'>
     <view class='t'>
       <view class='title'>
