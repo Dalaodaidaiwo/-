@@ -12,16 +12,16 @@ exports.main = async (event, context) => {
   const {
     OPENID
   } = cloud.getWXContext()
-  const{name,cellphone,companyName,title,hometown,speciality,school,openid}=event
+  const{nickName,cellphone,companyName,title,hometown,speciality,school,openid}=event
   await db.collection('card-items').where({
     _openid:openid 
   }).update({
     data: {
-      nickName: name,
+      nickName: nickName,
         cellphone: cellphone,
         companyName: companyName,
         title: title,
-        realName: name
+        realName: nickName,
     }
   })
   await db.collection('card-details').where({
