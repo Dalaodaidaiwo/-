@@ -29,6 +29,7 @@ Page({
     this.loadCardDetails();
   },
   loadCardDetails:function(){
+    /*
            let that=this;
            console.log(this.data.id + "    ID");
                db.collection("card-details")
@@ -50,6 +51,7 @@ Page({
                 });
           console.log("CARD DETAILS");
           console.log(this.data.cardDetails);
+    */
     },
  
     toEdit(e){

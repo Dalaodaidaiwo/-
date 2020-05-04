@@ -20,13 +20,13 @@
 
 </swiper>
 </view>
-
 <view class="page index-container">
     <view wx:if="{{!hasLoggedIn}}">请登录</view>
     <view wx:if="{{hasLoggedIn}}">
         <view class="weui-panel">
             <view class="weui-panel__bd card-container">
-                <card-default id="card-default" userId="{{userInfo._id}}"></card-default>
+          <!-- <card-default userId="{{userId}}"></card-default> -->
+           <card-default id="card-default" userId="{{userInfo._id}}"></card-default>
             </view>
         </view>
         <view class="weui-panel">
