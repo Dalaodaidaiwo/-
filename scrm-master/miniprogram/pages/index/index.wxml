@@ -1,33 +1,42 @@
 
 <view>
+<button open-type="getUserInfo">获取用户信息</button>
 <swiper class ="swiper-image" indicator-dots="true" height:10rpx autoplay="true" circular="true">
-<swiper-item>
-<navigator url="/pages/showq/showq"><image src='/assets/images/t1.png'></image></navigator>
-</swiper-item>
-
-<swiper-item>
-<navigator url="/pages/showq/showq"><image src='/assets/images/t2.png'></image></navigator>
-</swiper-item>
-
-<swiper-item>
-<navigator url="/pages/showq/showq"><image src='/assets/images/t3.jpg'></image></navigator>
-</swiper-item>
-
-<swiper-item>
-<navigator url="/pages/showq/showq"><image src='/assets/images/t4.jpg'></image></navigator>
-</swiper-item>
-
+<swiper-item><image mode = "scaleToFill" src='/assets/images/t1.png'></image></swiper-item>
+<swiper-item><image src='/assets/images/t2.png'></image></swiper-item>
+<swiper-item><image src='/assets/images/t3.jpg'></image></swiper-item>
+<swiper-item><image src='/assets/images/t4.jpg'></image></swiper-item>
+<swiper-item><image src='/assets/images/t5.jpg'></image></swiper-item>
 </swiper>
 </view>
+
 <view class="page index-container">
     <view wx:if="{{!hasLoggedIn}}">请登录</view>
     <view wx:if="{{hasLoggedIn}}">
-        <view class="weui-panel">
-            <view class="weui-panel__bd card-container">
-          <!-- <card-default userId="{{userId}}"></card-default> -->
-           <card-default id="card-default" userId="{{userInfo._id}}"></card-default>
-            </view>
-        </view>
+
+	<view class="outer">
+		<view class="card-container">
+			<view class="left-column">
+				<text class="user-name">{{cardInfo.realName||cardInfo.nickName||"---"}}</text>
+				<text class="user-title">{{cardInfo.title||"---"}}</text>
+				<view class="user-cellphone">
+					<text class="cellphone-label">手机：</text>
+					<text class="cellphone-number">{{cardInfo.cellphone||"---"}}</text>
+				</view>
+				<view class="user-company">
+					<text class="company-label">公司：</text>
+					<text class="company-name">{{cardInfo.companyName||"---"}}</text>
+				</view>
+			</view>
+			<view class="right-column">
+				<view class="avatar">
+					<image src="{{cardInfo.avatar||'/assets/images/pic_160.png'}}"></image>
+				</view>
+			</view>
+		</view>
+	</view>
+
+
         <view class="weui-panel">
             <view class="weui-panel__bd">
                 <view class="weui-flex data-container">
@@ -75,13 +84,11 @@
                         <image class="weui-grid__icon" src="/assets/images/edit.png" />
                         <view class="weui-grid__label">编辑</view>
                     </navigator>
-                     <!-- <navigator url="/pages/room/room" class="weui-grid" hover-class="weui-grid_active">
-                        <image class="weui-grid__icon" src="/assets/images/msg-3.png" />
-                        <view class="weui-grid__label">聊天室</view>
-                    </navigator> -->
                 </view>
             </view>
         </view>
+		
+		
     </view>
 </view>
 

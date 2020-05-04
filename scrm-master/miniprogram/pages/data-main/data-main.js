@@ -16,6 +16,10 @@ Page({
                     sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
                     sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
                 });
+            },
+            fail:function(e){
+              console.log(e);
+             console.log("GG");
             }
         });
     },
