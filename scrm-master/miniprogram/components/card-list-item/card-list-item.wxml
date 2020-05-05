@@ -1,14 +1,10 @@
-<view class="card-list-item">
-    <view class="avatar-view">
-        <image src="../../assets/images/avatar.jpg" bindtap="onChooseImage"></image>
+<view class="weui-cell weui-cell_access card-list-item-v2-container">
+    <view class="weui-cell__hd">
+        <image src='/assets/images/1.jpg'  class="avatar" ></image>
     </view>
-    <view class="text-view">
-        <view class="col-1">
-            <text class="user-name">忧郁的乌龟</text>
-            <text class="action">收藏了你的名片</text>
-        </view>
-        <view class="col-2">
-            <text class="time">2019/09/08</text>
-        </view>
+    <view class="weui-cell__bd user-info">
+        <text class="user-name">{{user.nickName||user.realName||user.userName}}</text>
+        <text class="company">{{user.companyName}}</text>
     </view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
 </view>

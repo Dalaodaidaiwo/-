@@ -14,11 +14,16 @@
                     <relation-visitor></relation-visitor>
                 </view>
             </view>
-            <!-- <view class="weui-tab__content relation-tab-container" hidden="{{activeIndex != 1}}">
+        </view>
+                <view class="weui-tab__panel">
+            <view class="weui-tab__content relation-tab-container" hidden="{{activeIndex != 1}}">
                 <view wx:if="{{activeIndex==1}}">
                     <relation-customer></relation-customer>
                 </view>
-            </view> -->
+            </view>
         </view>
+
+
+
     </view>
 </view>

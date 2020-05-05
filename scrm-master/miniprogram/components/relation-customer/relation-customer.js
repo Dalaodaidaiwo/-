@@ -15,7 +15,8 @@ Component({
             that.setData({
                 loading:true
             });
-            db.collection("actions")
+            
+            db.collection("doctors")
                 .where({
                     toUser:{
                         _id:"2"
@@ -35,6 +36,7 @@ Component({
                         console.error(event);
                     }
                 });
+                
         },
         loadMore(){
             console.log("下拉加载更多...");

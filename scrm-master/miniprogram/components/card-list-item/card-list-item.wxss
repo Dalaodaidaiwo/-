@@ -1,61 +1,35 @@
-.card-list-item {
-    display: flex;
-    flex-direction: row;
-    background: #fff;
-    border: #666 1px solid;
-    padding: 10rpx;
-    margin-bottom: 20rpx;
-    height: 120rpx;
+@import "../../assets/weui-2.0.0/style/widget/weui-cell/weui-cell.wxss";
+@import "../../assets/weui-2.0.0/style/widget/weui-cell/weui-access.wxss";
+
+.card-list-item-v2-container .avatar {
+    margin-right: 16px;
+    vertical-align: middle;
+    width: 48px;
+    height: 48px;
 }
 
-.card-list-item .avatar-view {
-    border: #666 1px solid;
-    width: 120rpx;
-    text-align: center;
-}
-
-.card-list-item .avatar-view image {
-    width: 100%;
-    height: 100%;
-    vertical-align: top;
-}
-
-.card-list-item .text-view {
-    border: #666 1px solid;
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-}
-
-.card-list-item .text-view .col-1 {
-    border: #666 1px solid;
-    flex: 1;
-    padding: 4rpx 12rpx;
+.card-list-item-v2-container .user-info {
+    align-self: flex-start;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     align-items: flex-start;
+    text-align: left;
 }
 
-.card-list-item .text-view .col-1 .user-name {
-    font-size: 36rpx;
+.card-list-item-v2-container .user-info .user-name {
+    font-size: 18px;
     font-weight: bold;
+    color: #333;
 }
 
-.card-list-item .text-view .col-1 .action {
-    font-size: 28rpx;
+.card-list-item-v2-container .user-info .company {
+    font-size: 12px;
+    color: #777;
+    padding-top: 5px;
 }
 
-.card-list-item .text-view .col-2 {
-    border: #666 1px solid;
-    width: 150rpx;
-    padding: 4rpx 0rpx 4rpx 12rpx;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-.card-list-item .text-view .col-2 .time {
-    font-size: 28rpx;
-    text-align: right;
+.card-list-item-v2-container .tools {
+    align-self: flex-start;
 }

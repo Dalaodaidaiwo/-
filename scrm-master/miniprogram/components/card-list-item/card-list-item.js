@@ -1,11 +1,15 @@
 Component({
-    properties:{
-        userId:String
-    },
-    data:{
-    },
-    methods:{
-    },
-    ready() {
-    }
+  options: {
+    multipleSlots: true
+  },
+  properties: {
+    user: Object
+  },
+  data: {
+  },
+  methods: {
+
+  },
+  ready() {
+  }
 })

@@ -1,6 +1,6 @@
 <view class="weui-cell weui-cell_access card-list-item-v2-container">
     <view class="weui-cell__hd">
-        <image src="{{user.avatar}}" class="avatar" ></image>
+        <image src="{{user.avatar}}"  class="avatar" ></image>
     </view>
     <view class="weui-cell__bd user-info">
         <text class="user-name">{{user.nickName||user.realName||user.userName}}</text>
