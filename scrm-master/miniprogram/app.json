@@ -3,7 +3,7 @@
       "pages/index/index",
     "pages/setting/setting",
     "pages/logs/logs",
-    "pages/mine/mine",
+    
     "pages/msg-main/msg-main",
     "pages/card-detail/card-detail",
     "pages/edit-main/edit-main",

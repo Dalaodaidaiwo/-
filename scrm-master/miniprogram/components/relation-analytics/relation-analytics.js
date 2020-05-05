@@ -1,11 +1,5 @@
-/**
- * @see 请参考Echarts官方文档
- * https://github.com/ecomfe/echarts-for-weixin
- */
 import * as echarts from "../ec-canvas/echarts";
 import geoJson from './mapData.js';
-const app = getApp();
-
 
 
 function initOption(data) {
@@ -139,126 +133,6 @@ function initOption_pie(data) {
     }
   }
 
-function initChart1(canvas, width, height) {
-    const chart = echarts.init(canvas, null, {
-        width: width,
-        height: height
-    });
-    canvas.setChart(chart);
-    var option = {
-        title: {
-            text: '客户关系',
-            left: 'left'
-        },
-        tooltip: {},
-        animationDurationUpdate: 1500,
-        animationEasingUpdate: 'quinticInOut',
-        series: [
-            {
-                type: 'graph',
-                layout: 'none',
-                symbolSize: 50,
-                roam: true,
-                label: {
-                    normal: {
-                    show: true
-                    }
-                },
-                edgeSymbol: ['circle', 'arrow'],
-                // edgeSymbolSize: [4, 10],
-                edgeLabel: {
-                    normal: {
-                    textStyle: {
-                        fontSize: 20
-                    }
-                    }
-                },
-                data: [{
-                    name: '客户1',
-                    x: 300,
-                    y: 300,
-                    itemStyle: {
-                    color: '#37A2DA'
-                    }
-                }, {
-                    name: '客户2',
-                    x: 800,
-                    y: 300,
-                    itemStyle: {
-                    color: '#32C5E9'
-                    }
-                }, {
-                    name: '客户3',
-                    x: 550,
-                    y: 100,
-                    itemStyle: {
-                    color: '#9FE6B8'
-                    }
-                }, {
-                    name: '客户4',
-                    x: 550,
-                    y: 500,
-                    itemStyle: {
-                    color: '#FF9F7F'
-                    }
-                }],
-                links: [{
-                    source: 0,
-                    target: 1,
-                    symbolSize: [5, 20],
-                    label: {
-                    normal: {
-                        show: true
-                    }
-                    },
-                    lineStyle: {
-                    normal: {
-                        width: 4,
-                        curveness: 0.2
-                    }
-                    }
-                }, {
-                    source: '客户2',
-                    target: '客户1',
-                    label: {
-                    normal: {
-                        show: true
-                    }
-                    },
-                    lineStyle: {
-                    normal: { curveness: 0.2 }
-                    }
-                }, {
-                    source: '客户1',
-                    target: '客户3'
-                }, {
-                    source: '客户2',
-                    target: '客户3'
-                }, {
-                    source: '客户2',
-                    target: '客户4'
-                }, {
-                    source: '客户1',
-                    target: '客户4'
-                }],
-                lineStyle: {
-                    normal: {
-                    opacity: 0.9,
-                    width: 2,
-                    curveness: 0
-                    }
-                }
-            }
-        ]
-    };
-
-    chart.setOption(option);
-    chart1=chart;
-    return chart;
-}
-
-
-
 
 
 Component({
@@ -270,9 +144,6 @@ Component({
         ec: {
             lazyLoad: true
         },
-        ec1: {
-            onInit: initChart1
-        },
         ec2: {
           lazyLoad: true
         },
@@ -282,9 +153,7 @@ Component({
         userInfo:{}
     },
     methods:{
-        loadStatData(){
-          
-        }
+        
     },
     ready() {
       this.ecComponent = this.selectComponent('#mychart-dom-bar');
@@ -294,16 +163,12 @@ Component({
         let result = res.result
         let option = initOption(result)
         this.ecComponent.init((canvas, width, height) => {
-          // 获取组件的 canvas、width、height 后的回调函数
-          // 在这里初始化图表
           const chart = echarts.init(canvas, null, {
             width: width,
             height: height
           });
           echarts.registerMap('china', geoJson);
           chart.setOption(option)
-          // 将图表实例绑定到 this 上，可以在其他成员函数（如 dispose）中访问
-          //this.chart = chart;
           return chart;
         });
       })
@@ -315,15 +180,13 @@ Component({
         let result = res.result
         let option_pie = initOption_pie(result)
         this.ecComponent_pie.init((canvas, width, height) => {
-          // 获取组件的 canvas、width、height 后的回调函数
-          // 在这里初始化图表
           const chart = echarts.init(canvas, null, {
             width: width,
             height: height
           });
           canvas.setChart(chart);
           chart.setOption(option_pie)
-          // 将图表实例绑定到 this 上，可以在其他成员函数（如 dispose）中访问
+         
           this.chart = chart;
           return chart;
         });
@@ -334,29 +197,21 @@ Component({
         name: 'getNum'
       }).then((res) => {
         let result = res.result
-        //console.log("yeah")
-        //console.log(result)
+        
         let option_line = initOption_line(result)
         this.ecComponent_line.init((canvas, width, height) => {
-          // 获取组件的 canvas、width、height 后的回调函数
-          // 在这里初始化图表
+          
           const chart = echarts.init(canvas, null, {
             width: width,
             height: height
           });
           canvas.setChart(chart);
           chart.setOption(option_line)
-          // 将图表实例绑定到 this 上，可以在其他成员函数（如 dispose）中访问
+        
           this.chart = chart;
           return chart;
         });
         
       })
-        this.loadStatData();
-        setTimeout(function () {
-            // console.log(chart1);
-            // console.log(chart2);
-            // console.log(chart3);
-        }, 2000);
     }
 })

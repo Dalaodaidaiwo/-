@@ -13,8 +13,6 @@ Page({
       complete: res => {
         console.log(res);
         if (!res || !res.result || !res.result.openid) {
-          //登录失败
-          console.log("GG");
           return;
         }
         _this.setData({
@@ -49,29 +47,7 @@ Page({
             console.error(event);
         }
     });
-    /*
-           let that=this;
-           console.log(this.data.id + "    ID");
-               db.collection("card-details")
-                .where({
-                  _openid:this.data.id 
-                })
-                .limit(1)
-                .get({
-                    success:function(res){
-                        if(res&&res.data&&res.data.length){
-                            that.setData({
-                                cardDetails:res.data[0]
-                            });
-                        }
-                    },
-                    fail:function(event){
-                        console.error(event);
-                    }
-                });
-          console.log("CARD DETAILS");
-          console.log(this.data.cardDetails);
-    */
+
     },
  
     toEdit(e){
