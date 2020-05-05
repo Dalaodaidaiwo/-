@@ -1,7 +1,10 @@
 {
   "pages": [
-      "pages/index/index",
+    
+    "pages/index/index",
     "pages/setting/setting",
+    
+    
     "pages/logs/logs",
     
     "pages/msg-main/msg-main",
@@ -17,7 +20,8 @@
     "pages/poster-list/poster-list",
     "pages/room/room",
     
-    "pages/showq/showq"
+    "pages/showq/showq",
+    "pages/systeminfo/systeminfo"
   ],
   "window": {
     "backgroundTextStyle": "light",

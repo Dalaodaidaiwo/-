@@ -30,7 +30,13 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     });
-
+     //获取系统信息
+     wx.getSystemInfo({
+      success: (res) => {
+        this.globalData.systeminfo = res
+        this.globalData.isIPhoneX = /iphonex/gi.test(res.model.replace(/\s+/, ''))
+      },
+    })
     //TODO:重构这里丑陋的回调缩进
     // 获取用户信息
     wx.getSetting({
@@ -108,7 +114,7 @@ App({
                                   that.globalData.userInfo=res.data[0];
                                   console.log(that.globalData.userInfo);
                                 }
-
+                                this.globalData.login=true;
                                 // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
                                 // 所以此处加入 callback 以防止这种情况
                                 if(that.callbacks&&that.callbacks.length){
@@ -130,7 +136,11 @@ App({
     })
   },
   globalData: {
-    userInfo: {}
+    keepscreenon:false,
+    systeminfo: {},
+    isIPhoneX: false,
+    userInfo: {},
+    login:false
   },
   callbacks:[]
 })
