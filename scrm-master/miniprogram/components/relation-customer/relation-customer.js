@@ -6,7 +6,8 @@ Component({
     },
     data:{
         loading:true,
-        relations:[]
+        relations:[],
+        number:0
     },
     methods:{
         loadData(){
@@ -28,9 +29,11 @@ Component({
                     success:function(res){
                         console.log(res);
                         that.setData({
+                            number:res.data.length,
                             loading:false,
                             relations:[...res.data]
                         });
+                        console.log(this.data.number,"WHATS THIS?");
                     },
                     fail:function(event){
                         console.error(event);
@@ -44,6 +47,7 @@ Component({
         }
     },
     ready() {
+
         this.loadData();
     }
 })

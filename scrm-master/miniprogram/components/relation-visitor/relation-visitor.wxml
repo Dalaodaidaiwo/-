@@ -16,7 +16,7 @@
         <view class="weui-panel__bd">
             <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                 <view class="weui-cell__bd weui-cell_primary">
-                    <text>今日访问1024，总访问量65535</text>
+                    <text>今日访问{{today_visit}}，总访问量{{total_visit}}</text>
                 </view>
             </view>
         </view>

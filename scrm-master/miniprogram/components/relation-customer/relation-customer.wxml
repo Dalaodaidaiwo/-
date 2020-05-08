@@ -16,7 +16,7 @@
         <view class="weui-panel__bd">
             <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                 <view class="weui-cell__bd weui-cell_primary">
-                    <text>咨询过5位医生</text>
+                    <text>咨询过{{number}}位医生</text>
                 </view>
             </view>
         </view>

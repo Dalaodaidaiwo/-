@@ -16,8 +16,6 @@ Page({
     }
   },
   onLoad() {
-
-
     let that = this;
     const db = wx.cloud.database();
     const _ = db.command;
@@ -61,7 +59,7 @@ Page({
                 wx.cloud.callFunction({
                     name:'login',
                     complete:res=>{
-              
+                        
                         if(!res||!res.result||!res.result.openid){
   
                           return;
