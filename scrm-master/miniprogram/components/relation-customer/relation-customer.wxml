@@ -24,9 +24,12 @@
     <view class="weui-panel">
         <view class="weui-panel__bd">
             <scroll-view scroll-y="{{true}}" scroll-with-animation="{{true}}" bindscrolltolower="loadMore">
-                <navigator wx:for="{{relations}}" wx:key="*this"  url="../room/room?chatid={{item._id}}" hover-class="weui-cell_active">
-                    <card-list-item-v2 user="{{item.fromUser}}"></card-list-item-v2>
+                <view wx:for="{{relations}}"  wx:for-index="item_id"  wx:key="*this"  bindtouchstart = 'touch' id="{{item.fromUser.openid + ' '+item.toUser.openid}}" 
+                hover-class="weui-cell_active">
+                <navigator  url="../room/room?chatid={{cur_key}}">
+                    <card-list-item-v2 user="{{item.fromUser}}"  ></card-list-item-v2>
                 </navigator>
+                </view>
                 <view class="weui-cell weui-cell_access loadmore" wx:if="{{loading}}">
                     <text>正在加载...</text>
                 </view>
