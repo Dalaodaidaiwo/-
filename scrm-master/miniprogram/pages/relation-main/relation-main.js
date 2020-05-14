@@ -23,18 +23,6 @@ Page({
         });
       }
     });
-
-wx.cloud.callFunction({
-  name:'ini_relations',
-
-  success:function(res){
- console.log(res);
- console.log("INI_relation");
-  },
-  fail:console.error
-})
-    
-    
   },
 
   tabClick: function (e) {

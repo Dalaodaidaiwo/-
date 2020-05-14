@@ -7,7 +7,6 @@ Component({
         userId:String
     },
     data:{
-      cur_key: "",
       today_visit:0,
       total_visit:0,
         recordid:"",
@@ -64,28 +63,11 @@ Component({
             }),
            console.log("USER INFO",this.data.userInfo);
         },
-      
+
         loadMore(){
             console.log("下拉加载更多...");
             this.loadData();
-        },
-        touch(e) {
-        var i = e.currentTarget.id;
-        var arr = new Array();
-        var fi = ""; var se = "";
-        arr = i.split(" ");
-        if (arr[0].charAt(0) > arr[1].charAt[0]) {
-          this.setData({
-            cur_key: arr[0] + arr[1]
-          })
         }
-        else {
-          this.setData({
-            cur_key: arr[1] + arr[0]
-          })
-        }
-        console.log(this.data.cur_key + "This is the room_id now.");
-      }
     },
     ready() {
         this.loadData();
