@@ -1,10 +1,12 @@
 const db=wx.cloud.database();
 const _=db.command;
+
 Component({
     properties:{
         userId:String
     },
     data:{
+        cur_key:"",
         loading:true,
         relations:[],
         number:0
@@ -16,13 +18,8 @@ Component({
             that.setData({
                 loading:true
             });
-            
             db.collection("doctors")
-                .where({
-                    toUser:{
-                        _id:"2"
-                    }
-                })
+                .where({ toUser:{ _id:"2"} })
                 .limit(10)
                 .orderBy("time","desc")
                 .get({
@@ -36,18 +33,34 @@ Component({
                         console.log(this.data.number,"WHATS THIS?");
                     },
                     fail:function(event){
-                        console.error(event);
-                    }
+                        console.error(event);}
                 });
-                
         },
         loadMore(){
             console.log("下拉加载更多...");
             this.loadData();
-        }
+        },
+         touch(e) {
+        var i = e.currentTarget.id;
+        var arr = new Array(); 
+        var fi = ""; var se = "";
+        arr = i.split(" ");
+      if(arr[0].charAt(0) > arr[1].charAt[0]){
+          this.setData({
+            cur_key:arr[0]+arr[1]
+          })
+      }
+      else{
+        this.setData({
+          cur_key: arr[1] + arr[0]
+        })
+      }
+        console.log(this.data.cur_key + "This is the room_id now.");
+      }
     },
     ready() {
-
         this.loadData();
     }
+    
+   
 })
