@@ -15,7 +15,6 @@
       "van-cell": "/miniprogram_npm/vant-weapp/cell/index",
       "van-cell-group": "/miniprogram_npm/vant-weapp/cell-group/index",
       "van-toast": "/miniprogram_npm/vant-weapp/toast/index",
-      "van-swipe-cell": "/miniprogram_npm/vant-weapp/swipe-cell/index",
-      "van-icon": "/miniprogram_npm/vant-weapp/icon/index"
+      "van-swipe-cell": "/miniprogram_npm/vant-weapp/swipe-cell/index"
     }
 }
