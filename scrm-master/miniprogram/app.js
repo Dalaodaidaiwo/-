@@ -1,5 +1,5 @@
 App({
-  onLaunch: function () {
+  onLaunch: function (path) {
     let that=this;
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
@@ -22,114 +22,27 @@ App({
     var logs = wx.getStorageSync('logs') || [];
     logs.unshift(Date.now());
     wx.setStorageSync('logs', logs);
-
-    // 登录
-    wx.login({
-      success: res => {
-        //console.log(res);
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+    let query = '';
+    let redirect_url = '';
+    
+    //解析url中是否带有参数，若有则拼接成字符串
+    for (let i in path.query) {
+      if (i) {
+        query = query + i + '=' + path.query[i] + '&'
       }
-    });
-     //获取系统信息
-     wx.getSystemInfo({
-      success: (res) => {
-        this.globalData.systeminfo = res
-        this.globalData.isIPhoneX = /iphonex/gi.test(res.model.replace(/\s+/, ''))
-      },
-    })
-    //TODO:重构这里丑陋的回调缩进
-    // 获取用户信息
+    }
+    if (query) {
+      redirec_url = parh.path + '?' + query;
+    } else {
+      redirect_url = path.path;
+    }
     wx.getSetting({
       success: res => {
-        
-        if (!res.authSetting['scope.userInfo']){
-          
-          wx.showModal({
-            title: '提示',
-            content: '需要开启权限，请点击设置页上方的按钮授权',
-          })
-          
-   
-        }
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              //console.log(res);
-              that.globalData.userInfo = res.userInfo
-              that.globalData.userInfo.avatar=res.userInfo.avatarUrl;
-              that.globalData.userInfo.creatTime=new Date();
-              
-              //TODO:写入或者更新Session
-
-              /**
-               * 业务逻辑：
-               * 如果能根据openid在自己的数据库中获取到用户信息，则update当前的全局userInfo对象
-               * 否则，自动创建一条user记录和一条card记录
-               */
-              wx.cloud.callFunction({
-                  name:'login',
-                  complete:res=>{
-                      //console.log(res);
-                      if(!res||!res.result||!res.result.openid){
-                        //登录失败
-                        console.log("调用失败");
-                        return;
-                      }
-                      that.globalData.userInfo.openid=res.result.openid;
-                      db.collection("users")
-                      
-                        .where({
-                            openid:res.result.openid
-                        })
-                        .limit(1)
-                        
-                        .get({
-                            success:function(res){
-                                console.log(res);
-                                if(!res||!res.data||!res.data.length){
-                                  //没有获取到数据，自动创建一条user记录和一条card记录
-                                  console.log("没有获取到数据");
-                                  db.collection("users").where({
-                                    _openid: res.result.openid
-                                  })
-                                    .add({
-                                      data:that.globalData.userInfo,
-                                      success:function(res){
-                                        console.log(res);
-                                      }
-                                    });
-                                  db.collection("card-items").where({
-                                    _openid: res.result.openid
-                                  })
-                                  .add({
-                                    data:that.globalData.userInfo,
-                                    success:function(res){
-                                    console.log(res);
-                                      }
-                                    });
-                                }else{
-                                  console.log("获取到了用户数据");
-                                  //获取到了用户数据，update当前的全局userInfo对象
-                                  that.globalData.userInfo=res.data[0];
-                                  console.log(that.globalData.userInfo);
-                                }
-                                this.globalData.login=true;
-                                // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-                                // 所以此处加入 callback 以防止这种情况
-                                if(that.callbacks&&that.callbacks.length){
-                                  that.callbacks.forEach((item,index,array)=>{
-                                    item(that.globalData.userInfo);
-                                  });
-                                }
-                            },
-                            fail:function(event){
-                                console.error(event);
-                            }
-                        });
-                  }
-              });
-            }
+        console.log(res);
+        if (!res.authSetting['scope.userInfo']) {
+          console.log("login1");
+          wx.redirectTo({
+            url: '../../pages/login/login?redirect_url=' + encodeURIComponent(`/${redirect_url}`),
           })
         }
       }
