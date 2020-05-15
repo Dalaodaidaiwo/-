@@ -6,23 +6,27 @@ Page({
   data: {
     hasLoggedIn: true,
     userInfo: {},
+    doctor:false,
     userId: "",
     cardInfo: {},
-    statData: {
-      visitors_today: 0,
-      visitors_total: 0,
-      customers: 0,
-      msg_today: 0
-    }
+    all_appointment:0,
+      all_treat:0,
+      all_heal:0,
   },
   onLoad() {
+    if(app.globalData.userInfo.doctor=="1"){
+      this.setData({
+          doctor:true
+      })
+    }
     if(app.globalData.login==false){
       wx.getSetting({
         success: res => {
           if (res.authSetting['scope.userInfo']) {
             wx.getUserInfo({
               success: res => {
-                app.globalData.userInfo = res.userInfo
+                app.globalData.userInfo = res.userInfo;
+                
                 app.globalData.userInfo.avatar=res.userInfo.avatarUrl;
                 app.globalData.userInfo.creatTime=new Date();
                 wx.cloud.callFunction({
@@ -74,6 +78,7 @@ Page({
         }
       })
       app.globalData.login=true;
+      
     }
     let that = this;
     const db = wx.cloud.database();
@@ -103,6 +108,64 @@ Page({
           }
         })
     });
+
+    db.collection("num")
+        .where({
+          name: db.RegExp({
+            regexp: "预约",
+            options: 's',
+          })
+        })
+        .limit(1)
+        .get({
+          success: function (res) {
+            var sum=0;
+            for(var i=0;i<res.data[0].data.length;i++){
+                sum+=res.data[0].data[i];
+            }
+            that.setData({
+              all_appointment:sum
+            })
+          }
+        })
+        db.collection("num")
+        .where({
+          name: db.RegExp({
+            regexp: "治疗中",
+            options: 's',
+          })
+        })
+        .limit(1)
+        .get({
+          success: function (res) {
+            var sum=0;
+            for(var i=0;i<res.data[0].data.length;i++){
+                sum+=res.data[0].data[i];
+            }
+            that.setData({
+              all_treat:sum
+            })
+          }
+        })
+        db.collection("num")
+        .where({
+          name: db.RegExp({
+            regexp: "已治愈",
+            options: 's',
+          })
+        })
+        .limit(1)
+        .get({
+          success: function (res) {
+            var sum=0;
+            for(var i=0;i<res.data[0].data.length;i++){
+                sum+=res.data[0].data[i];
+            }
+            that.setData({
+              all_heal:sum
+            })
+          }
+        })
 
   },
   onShow(e) {
