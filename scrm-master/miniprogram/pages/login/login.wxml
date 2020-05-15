@@ -1,0 +1,19 @@
+<view class="title">医患关系管理小程序</view>
+<image class="picture"  src="./img/doctor.png"/>
+<view class="container log-list">
+  
+  <view class="role">请选择您的角色</view>
+  <view style="margin: 0 auto">
+    <van-radio-group value="{{ radio }}" bind:change="onChange">
+      <van-radio class="radio" name="1" >医生</van-radio>
+      <van-radio class="radio" name="0" >病人</van-radio>
+    </van-radio-group>
+  </view>
+  <view class="text">
+    该程序将获得以下权限
+  </view>
+  <view class="text">-获得您的公开信息（头像、昵称等</view>
+  <van-button open-type="getUserInfo" bindgetuserinfo='handleLogin' type="info" round size="large" >
+    完成
+  </van-button>
+</view>

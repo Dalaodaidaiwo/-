@@ -16,37 +16,6 @@ Page({
     }
   },
   onLoad() {
-    let that = this;
-    const db = wx.cloud.database();
-    const _ = db.command;
-    app.callbacks.push((userInfo) => {
-      this.setData({
-        userInfo: userInfo
-      });
-    });
-
-    app.callbacks.push((userInfo) => {
-      db.collection("statistics-first-page")
-        .where({
-          _openid: userInfo._openid
-        })
-        .limit(1)
-        .get({
-          success: function (res) {
-            if (res && res.data && res.data.length) {
-              that.setData({
-                statData: res.data[0]
-              });
-            }
-          },
-          fail: function (event) {
-            console.error(event);
-          }
-        })
-    });
-
-  },
-  onShow(e) {
     if(app.globalData.login==false){
       wx.getSetting({
         success: res => {
@@ -106,6 +75,38 @@ Page({
       })
       app.globalData.login=true;
     }
+    let that = this;
+    const db = wx.cloud.database();
+    const _ = db.command;
+    app.callbacks.push((userInfo) => {
+      this.setData({
+        userInfo: userInfo
+      });
+    });
+
+    app.callbacks.push((userInfo) => {
+      db.collection("statistics-first-page")
+        .where({
+          _openid: userInfo._openid
+        })
+        .limit(1)
+        .get({
+          success: function (res) {
+            if (res && res.data && res.data.length) {
+              that.setData({
+                statData: res.data[0]
+              });
+            }
+          },
+          fail: function (event) {
+            console.error(event);
+          }
+        })
+    });
+
+  },
+  onShow(e) {
+    
     var that = this;
     db.collection('card-items')
       .where({

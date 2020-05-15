@@ -1,0 +1,12 @@
+{
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "登录",
+    "navigationBarTextStyle": "black",
+    "usingComponents": {
+        "van-button": "/miniprogram_npm/vant-weapp/button/index",
+        "van-radio": "/miniprogram_npm/vant-weapp/radio/index",
+        "van-radio-group": "/miniprogram_npm/vant-weapp/radio-group/index"
+
+    }
+}

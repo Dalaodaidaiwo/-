@@ -5,7 +5,7 @@ let sliderWidth = 96;
 
 Page({
   data: {
-    tabs: ["动态", "我的医生"],
+    tabs: ["我的好友", "我的医生"],
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,
@@ -14,6 +14,16 @@ Page({
   },
 
   onLoad: function () {
+    if(app.globalData.userInfo.doctor=="0"){
+      this.setData({
+          tabs:["我的好友","我的医生"]
+      })   
+  }
+  else{
+      this.setData({
+          tabs:["我的病人","我的同事"]
+      })
+  }
     var that = this;
     wx.getSystemInfo({
       success: function (res) {

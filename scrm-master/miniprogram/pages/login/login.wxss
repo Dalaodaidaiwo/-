@@ -1,0 +1,27 @@
+page {
+  background-color: #fff;
+}
+.role{
+  text-align: center;
+  font-size: large;
+}
+.title{
+  text-align: center;
+  font-size: large;
+  color: rgba(0, 0, 0, 0.808);
+}
+.radio{
+  display: flex;
+  margin:30rpx;
+}
+.text{
+  font-size: small;
+  color: rgb(202, 202, 202);
+}
+.log-list {
+  display: flex;
+  flex-direction: column;
+  
+  padding: 40rpx;
+}
+

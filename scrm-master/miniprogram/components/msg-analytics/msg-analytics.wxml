@@ -5,7 +5,7 @@
     <van-tab title="人数情况">
       <van-picker columns="{{ columns }}" bind:change="onChange" />
       <van-cell-group>
-        <van-field value="{{ patient }}" required clearable label="人数" icon="music-o" placeholder="请输入人数" bindblur="onFieldChange" />
+        <van-field value="{{ patient }}" required clearable label="人数"  placeholder="请输入人数" bindblur="onFieldChange" />
       </van-cell-group>
       <van-button color="#DC143C" round size="large" is-link bind:click="handleForm1">提交</van-button>
     </van-tab>
