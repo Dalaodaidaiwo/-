@@ -4,7 +4,7 @@
     "pages/index/index",
     "pages/setting/setting",
     
-    
+    "pages/login/login",
     "pages/logs/logs",
     
     "pages/msg-main/msg-main",
