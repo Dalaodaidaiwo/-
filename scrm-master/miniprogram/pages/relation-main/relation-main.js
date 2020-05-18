@@ -1,18 +1,37 @@
-
-
 const app = getApp()
 let sliderWidth = 96;
 
 Page({
   data: {
+    
     tabs: ["我的好友", "我的医生"],
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,
-
+    searchVal: "",
+    searchList:[]
 
   },
-
+  onShow(){
+    this.onLoad();
+  },
+  inputTyping(e){
+    this.setData({  
+      searchVal:e.detail.value
+    })
+    console.log("YOU are searching "+ this.data.searchVal);
+  },
+  clear:function(){
+    console.log("CLEAR");
+    this.setData({
+      searchVal:""
+    })
+  },
+  search:function(){
+    wx.navigateTo({
+      url: '../search/search?searchVal='+this.data.searchVal,
+    })
+  },
   onLoad: function () {
     if(app.globalData.userInfo.doctor=="0"){
       this.setData({
@@ -36,16 +55,13 @@ Page({
 
 wx.cloud.callFunction({
   name:'ini_relations',
-
   success:function(res){
  console.log(res);
  console.log("INI_relation");
   },
   fail:console.error
 })
-    
-    
-  },
+},
 
   tabClick: function (e) {
     console.log(e);

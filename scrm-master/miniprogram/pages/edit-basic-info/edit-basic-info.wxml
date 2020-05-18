@@ -11,7 +11,8 @@
                         <view class="weui-label">*姓名</view>
                     </view>
                     <view class="weui-cell__bd">
-                        <input bindblur="bindnameInput" name="name" class="weui-input" placeholder="请输入姓名" />
+                        <input bindblur="bindnameInput"
+                        value="{{pre_name}}" name="name" class="weui-input" placeholder="请输入姓名" />
                     </view>
                 </view>
                 <view class="weui-cell">
@@ -19,7 +20,7 @@
                         <view class="weui-label">*手机号</view>
                     </view>
                     <view class="weui-cell__bd">
-                        <input bindblur="bindcellphoneInput"  value="{{cellphone}}" name="cellphone" class="weui-input" placeholder="请输入手机号" />
+                        <input bindblur="bindcellphoneInput"  value="{{pre_cellphone}}" name="cellphone" class="weui-input" placeholder="请输入手机号" />
                     </view>
                 </view>
                 <view class="weui-cell">
@@ -27,7 +28,7 @@
                         <view class="weui-label">*公司名称</view>
                     </view>
                     <view class="weui-cell__bd">
-                        <input bindblur="bindcompanyNameInput" value="{{companyName}}" id="companyName" name="companyName" class="weui-input" placeholder="请输入公司名称" />
+                        <input bindblur="bindcompanyNameInput"  id="companyName" name="companyName" class="weui-input"  value="{{pre_companyName}}" placeholder="请输入公司名称" />
                     </view>
                 </view>
                 <view class="weui-cell">
@@ -35,7 +36,7 @@
                         <view class="weui-label">*职务</view>
                     </view>
                     <view class="weui-cell__bd">
-                        <input bindblur="bindtitleInput"  name="title" class="weui-input" placeholder="请输入职务" />
+                        <input bindblur="bindtitleInput"  value="{{pre_title}}"  name="title" class="weui-input" placeholder="请输入职务" />
                     </view>
                 </view>
                 <view class="weui-cell">
@@ -52,7 +53,7 @@
                         <view class="weui-label">我的家乡</view>
                     </view>
                     <view class="weui-cell__bd">
-                       <input bindblur="bindhometownInput" value="{{hometown}}" id="hometown" name="hometown" class="weui-input" placeholder="我的家乡" />
+                       <input bindblur="bindhometownInput" value="{{pre_hometown}}" id="hometown" name="hometown" class="weui-input" placeholder="我的家乡" />
                     </view>
                 </view>
                 <view class="weui-cell">
@@ -60,7 +61,7 @@
                         <view class="weui-label">我的母校</view>
                     </view>
                     <view class="weui-cell__bd">
-                         <input bindblur="bindschoolInput" value="{{school}}" id="school" name="school" class="weui-input" placeholder="我的母校" />
+                         <input bindblur="bindschoolInput" value="{{pre_school}}" id="school" name="school" class="weui-input" placeholder="我的母校" />
                     </view>
                 </view>
                 <view class="weui-cell">
@@ -68,7 +69,7 @@
                         <view  class="weui-label">我的专业</view>
                     </view>
                     <view class="weui-cell__bd">
-                        <input bindblur="bindspecialityInput" value="{{speciality}}" id="speciality" name="speciality" class="weui-input" placeholder="我的专业" />
+                        <input bindblur="bindspecialityInput" value="{{pre_speciality}}" id="speciality" name="speciality" class="weui-input" placeholder="我的专业" />
                     </view>
                 </view>
             </view>

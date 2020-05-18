@@ -1,0 +1,40 @@
+<view class="page relation-main-container">
+
+<view calss = "container">
+	<view class="search">
+            <icon class ="icon" type="search" size="14"></icon>
+                        <input type="text"  style="width:240px;" placeholder="重新查找请返回" value="{{searchVal}}"  binconfirm = "search" bindinput="inputTyping" />
+             <view>
+            <icon class ="icon"wx:if="{{searchVal != '' }}" catchtap="clear" type="clear" size="14"></icon>
+            <icon class ="icon"wx:if="{{searchVal == '' }}"  type="clear" color="white" size="14"></icon>
+            </view>
+            <view ><text class="mytext" catchtap="search">搜索</text></view>
+	</view>
+</view>  
+<view class="res-tip">
+<image  class ="myimage" src="/assets/images/user-1.png" ></image>
+ <text decode="{{true}}">&nbsp;&nbsp;</text>
+ 点击 + 添加Ta为联系人吧！
+ </view>
+    <view class="weui-tab">
+      
+               
+            <view class="res-container">
+     <!-- 分割线 -->
+       
+           </view>
+            <view wx:for="{{searchList}}" wx:for-item="res" wx:key="res" id="res" class="res-container">
+                  <view class="mytextsize">
+                 <text decode="{{true}}">&nbsp;&nbsp;</text>
+                  <view class="res-user-name">{{res.nickname}}</view>
+                  <text decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;</text>
+                   <view class="res-small-name">{{res.realname}}</view>
+                   </view>
+                   <view class="myimagesize">
+                  <image class="myimage" src="/assets/images/add.jpg" bindtap="add" data-nickname = "{{res.nickname}}" data-realname="{{res.realname}}"></image>
+          </view>      
+            </view>
+              
+        </view>
+
+</view>

@@ -10,19 +10,10 @@ const _ = db.command
 // 云函数入口函数
 exports.main = async (event, context) => {
   let tmp = "fromUser.openid"
-  let s="openid"
-   const wxContext = cloud.getWXContext()
-    await db.collection('doctors').where({
-     duration:"300"
-    })
-      .update({
-        data: {
-          [tmp]:wxContext.OPENID
-        },
-      })
- 
-  await db.collection('actions').where({
-    duration:"300"
+  let s = "openid"
+  const wxContext = cloud.getWXContext()
+  await db.collection('doctors').where({
+    duration: "300"
   })
     .update({
       data: {
@@ -30,15 +21,8 @@ exports.main = async (event, context) => {
       },
     })
 
-  // await db.collection('world').where({
-  //   flag:"1"
-  // })
-  // .update({
-  //     data: {
-  //       [s]: wxContext.OPENID
-  //     },
-  //   })
-  //   console.log("Update");
+ 
+  console.log("Update");
   return {
     event,
     openid: wxContext.OPENID,

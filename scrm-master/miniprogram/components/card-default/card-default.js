@@ -18,7 +18,7 @@ Component({
             });
    
           });
-          console.log("!!!!!!!!!", this.data.userInfo_openid);
+     
             db.collection("card-items")
                 .where({
                   _openid: this.data.userInfo._openid

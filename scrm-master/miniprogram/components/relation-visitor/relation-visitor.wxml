@@ -1,5 +1,5 @@
 <view class="relation-visitor-container">
-    <view class="weui-search-bar__form">
+    <!-- <view class="weui-search-bar__form">
         <view class="weui-search-bar__box">
             <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
             <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
@@ -20,14 +20,14 @@
                 </view>
             </view>
         </view>
-    </view>
+    </view> -->
     <view class="weui-panel">
         <view class="weui-panel__bd">
             <scroll-view scroll-y="{{true}}" scroll-with-animation="{{true}}" bindscrolltolower="loadMore">
                <view wx:for="{{relations}}"  wx:for-index="item_id"  wx:key="*this"  bindtouchstart = 'touch' id="{{item.fromUser.openid + ' '+item.toUser.openid}}" 
                 hover-class="weui-cell_active">
                 <navigator  url="../room/room?chatid={{cur_key}}">
-                    <card-list-item-v2 user="{{item.fromUser}}"  ></card-list-item-v2>
+                    <card-list-item-v2 user="{{item.toUser}}"  ></card-list-item-v2>
                 </navigator>
                 </view>
 

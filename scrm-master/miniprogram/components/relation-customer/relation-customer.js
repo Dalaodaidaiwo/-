@@ -1,6 +1,6 @@
 const db=wx.cloud.database();
 const _=db.command;
-
+const app=getApp();
 Component({
     properties:{
         userId:String
@@ -13,13 +13,15 @@ Component({
     },
     methods:{
         loadData(){
+      
             console.log("加载数据...");
+            console.log(app.globalData.userInfo);
             let that=this;
             that.setData({
                 loading:true
             });
             db.collection("doctors")
-                .where({ toUser:{ _id:"2"} })
+              .where({ fromUser: { openid: app.globalData.userInfo.openid} })
                 .limit(10)
                 .orderBy("time","desc")
                 .get({

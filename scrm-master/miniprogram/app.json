@@ -1,12 +1,9 @@
 {
   "pages": [
-    
     "pages/index/index",
     "pages/setting/setting",
-    
     "pages/login/login",
     "pages/logs/logs",
-    
     "pages/msg-main/msg-main",
     "pages/card-detail/card-detail",
     "pages/edit-main/edit-main",
@@ -15,13 +12,12 @@
     "pages/edit-detail-images/edit-detail-images",
     "pages/relation-main/relation-main",
     "pages/share-main/share-main",
-   
     "pages/data-main/data-main",
     "pages/poster-list/poster-list",
     "pages/room/room",
-    
     "pages/showq/showq",
-    "pages/systeminfo/systeminfo"
+    "pages/systeminfo/systeminfo",
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",

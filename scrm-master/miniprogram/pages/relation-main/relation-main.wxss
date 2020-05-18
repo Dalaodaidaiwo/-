@@ -1,3 +1,42 @@
-.relation-main-container {}
+/* pages/search/search.wxss */
+page{
+  background: white;
+}
+.container {
+  margin: 20rpx;
+  display: flex;
+  direction: row;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color:white;
+  color: #939393;
+}
 
-.relation-main-container .relation-tab-container {}
+.icon{
+  margin: 20rpx;
+}
+.btn1 {
+  align-self: right;
+  width: 20%;
+
+  color:gray;
+  background-color: white;
+  font-size: 22rpx;
+}
+.search{
+margin-top: 20rpx;
+  width: 100%;
+  height: 85%;
+  background:white;
+  display: flex;
+  direction: row;
+  /* align-items: center;
+  justify-content: space-around; */
+}
+.mytext{
+  height: 5vh;
+  color:rgb(59, 56, 56);
+  background-color: white;
+  /* border: 1px solid #dedede; */
+}

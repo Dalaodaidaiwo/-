@@ -23,8 +23,8 @@ Component({
             });
             db.collection("actions")
                 .where({
-                    toUser:{
-                        _id:"2"
+                    fromUser:{
+                      openid: app.globalData.userInfo.openid   
                     }
                 })
                 .limit(10)
@@ -48,7 +48,6 @@ Component({
            .get({
              success:function(res){
                if (res && res.data && res.data.length) {
-                console.log(res.data[0]+"OKKKKKKKKKK");
                 that.setData({
                   today_visit:res.data[0].visitors_today,
                   total_visit:res.data[0].visitors_total
@@ -62,7 +61,7 @@ Component({
                console.log("DB failed"+event);
              }
             }),
-           console.log("USER INFO",this.data.userInfo);
+             console.log("USER INFO", app.globalData.userInfo.openid);
         },
       
         loadMore(){
