@@ -70,9 +70,6 @@
             </view>
         </view>
 
-
-
-
         <view class="weui-panel">
             <view class="weui-panel__bd">
                 <view class="weui-grids">
@@ -91,9 +88,5 @@
                 </view>
             </view>
         </view>
-
-
-
-        
     </view>
 </view>
