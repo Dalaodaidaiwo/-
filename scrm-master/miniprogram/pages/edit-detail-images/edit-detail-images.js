@@ -6,7 +6,7 @@ Page({
         text:"",
         bottom: 0,
         readOnly: false,
-        placeholder: '介绍一下你的详情吧，支持文字和图片...',
+        placeholder: '',
         _focus: false,
     },
     readOnlyChange() {
@@ -15,6 +15,16 @@ Page({
         })
     },
     onLoad() {
+      if (app.globalData.userInfo.doctor == "1"){
+        this.setData({
+          placeholder:"在这里上传您的医师资格证、介绍您擅长的领域，支持文字与图片..."
+        })
+      }
+      else{
+        this.setData({
+          placeholder:"介绍一下您的详情吧，越详细越有助于医生判断噢！支持文字与图片..."
+        })
+      }
       this.setData({
         userInfo: app.globalData.userInfo
       });
@@ -34,12 +44,11 @@ Page({
         success: function (res) {
           //  *nice ↓
           //因为success函数是一个闭包，无法通过this来setData      
-          //太恶心了，原来是异步执行orz  呕
+         
           _this.setData({
             text: res.html
           })
-         //console.log(_this.data.text);
-          //console.log("First?????");
+
            wx.cloud.callFunction({
             name: 'editRichDetails',
             data: {
@@ -47,22 +56,7 @@ Page({
               openid: app.globalData.userInfo.openid
             }
           })
-         // console.log("NOW::", _this.data.text);
-          // db.collection('card-details').doc("31812d39-2849-483e-b344-8ea364c507ce").update({
-          //   data: {
-          //     richDetails: _this.data.text
-          //   },
-          //   success: res => {
-          //     this.setData({
-          //       richDetails: _this.data.text
-          //     })
-          //     console.log("DB UPATAE OKK");
-          //   },
-          //   fail: err => {
-          //     icon: 'none',
-          //       console.error('[数据库] [更新记录] 失败：', err)
-          //   }
-          // })
+
         }
       }),
       
@@ -126,8 +120,7 @@ Page({
             count: 1,
             success: function (res) {
             that.editorCtx.insertImage({
-              /*
-                src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543767268337&di=5a3bbfaeb30149b2afd33a3c7aaa4ead&imgtype=0&src=http%3A%2F%2Fimg02.tooopen.com%2Fimages%2F20151031%2Ftooopen_sy_147004931368.jpg',*/
+
                
                 src:res.tempFilePaths[0],
                 data: {

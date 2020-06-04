@@ -59,7 +59,7 @@ db.collection('card-items').where({
 
 
 
-    db.collection('world').
+    db.collection('card-items').
      where({
          flag:"1"
       })
@@ -141,8 +141,6 @@ db.collection('card-items').where({
       // data 字段表示需新增的 JSON 数据
       data: {
         duation: "300",
-      
-        due: new Date("2018-09-01"),
         tags: [
           "cloud",
           "database"

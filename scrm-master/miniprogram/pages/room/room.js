@@ -7,10 +7,9 @@ Page({
     logged: false,
     takeSession: false,
     requestResult: '',
-    // chatRoomEnvId: 'release-f8415a',
     chatRoomCollection: 'chatroom',
-    chatRoomGroupId:'+otx5I49JnQ69qKmJSWxO40gZYoNw',
     chatRoomGroupName: '',
+    chatRoomGroupId:'',
   
     // functions for used in chatroom components
     onGetUserInfo: null,
@@ -18,10 +17,11 @@ Page({
   },
 
   onLoad: function(options) {
-    console.log(options)
+    console.log("页面传值 chatid"+options.chatid)
     this.setData({
       chatRoomGroupId:options.chatid
     })
+    console.log("设置后 的 id"+this.data.chatRoomGroupId);
     // 获取用户信息
     wx.getUserInfo({
       success: res => {

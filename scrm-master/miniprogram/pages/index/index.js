@@ -182,7 +182,6 @@ Page({
         })
         that.onLoad();
         console.log("INDEX", res.data[0]);
-        console.log("card Info 优秀INDEX - NickName", this.data.cardInfo.nickName);
       })
       .catch(res => {
         console.log("GG");

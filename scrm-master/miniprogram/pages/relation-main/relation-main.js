@@ -12,9 +12,6 @@ Page({
     searchList:[]
 
   },
-  onShow(){
-    this.onLoad();
-  },
   inputTyping(e){
     this.setData({  
       searchVal:e.detail.value
@@ -43,6 +40,10 @@ Page({
           tabs:["我的病人","我的同事"]
       })
   }
+   
+},
+  onShow() {
+    this.onLoad();
     var that = this;
     wx.getSystemInfo({
       success: function (res) {
@@ -53,16 +54,15 @@ Page({
       }
     });
 
-wx.cloud.callFunction({
-  name:'ini_relations',
-  success:function(res){
- console.log(res);
- console.log("INI_relation");
+    wx.cloud.callFunction({
+      name: 'ini_relations',
+      success: function (res) {
+        console.log(res);
+        console.log("INI_relation");
+      },
+      fail: console.error
+    })
   },
-  fail:console.error
-})
-},
-
   tabClick: function (e) {
     console.log(e);
     this.setData({

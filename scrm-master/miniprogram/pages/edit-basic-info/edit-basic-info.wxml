@@ -25,26 +25,38 @@
                 </view>
                 <view class="weui-cell">
                     <view class="weui-cell__hd">
-                        <view class="weui-label">*公司名称</view>
+                        <view class="weui-label">*详情</view>
                     </view>
+
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                    <view class = "picker">
+                    {{array[index]}}
+                    </view>
+                    </picker>
+                     <view class = "section_title">
+                     <text decode="{{true}}"> &nbsp; &nbsp; 点击选择科室</text>
+                     </view>
                     <view class="weui-cell__bd">
-                        <input bindblur="bindcompanyNameInput"  id="companyName" name="companyName" class="weui-input"  value="{{pre_companyName}}" placeholder="请输入公司名称" />
+
                     </view>
                 </view>
-                <view class="weui-cell">
+                <view  wx:if ="{{app.globalData.userInfo.doctor}}" class="weui-cell">
                     <view class="weui-cell__hd">
                         <view class="weui-label">*职务</view>
+                        
+                        
                     </view>
                     <view class="weui-cell__bd">
                         <input bindblur="bindtitleInput"  value="{{pre_title}}"  name="title" class="weui-input" placeholder="请输入职务" />
                     </view>
+
                 </view>
                 <view class="weui-cell">
                     <view class="weui-cell__hd">
-                        <view class="weui-label">*公司地址</view>
+                        <view class="weui-label">*地址</view>
                     </view>
                     <view class="weui-cell__bd weui-cell_primary">
-                        <view bindtap="chooseLocation">{{address?address:"请选择公司地址"}}</view>
+                        <view bindtap="chooseLocation">{{address?address:"请选择地址"}}</view>
                     </view>
                     <view class="weui-cell__ft weui-cell__ft_in-access"></view>
                 </view>

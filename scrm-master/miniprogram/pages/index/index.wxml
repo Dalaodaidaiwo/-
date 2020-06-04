@@ -30,7 +30,7 @@
                         <text class="cellphone-number">{{cardInfo.cellphone||"---"}}</text>
                     </view>
                     <view class="user-company">
-                        <text class="company-label">公司：</text>
+                        <text class="company-label">详情：</text>
                         <text class="company-name">{{cardInfo.companyName||"---"}}</text>
                     </view>
                 </view>

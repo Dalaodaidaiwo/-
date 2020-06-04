@@ -1,30 +1,22 @@
 <view class="relation-customer-container">
-    <!-- <view class="weui-search-bar__form">
-        <view class="weui-search-bar__box">
-            <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-            <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
-            <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
-                <icon type="clear" size="14"></icon>
-            </view>
-        </view>
-        <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
-            <icon class="weui-icon-search" type="search" size="14"></icon>
-            <view class="weui-search-bar__text">搜索</view>
-        </label>
-    </view> -->
     <view class="weui-panel">
         <view class="weui-panel__bd">
             <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd weui-cell_primary">
-                    <text>咨询过{{number}}位医生</text>
+                      <view  wx:if="{{doctor}}" class="weui-cell__bd weui-cell_primary">
+                    <text>您有{{number}}位同事</text>
+                </view> 
+                <view  wx:if="{{!doctor}}" class="weui-cell__bd weui-cell_primary">
+                    <text wx:if="{{number != 0}}">根据您的情况，我们为您推荐了{{number}}位医生噢！</text>
+                    <text wx:else="{{number != 0}}">暂时没有与您匹配的医生噢！</text>
                 </view>
             </view>
         </view>
     </view>
+    
     <view class="weui-panel">
         <view class="weui-panel__bd">
             <scroll-view scroll-y="{{true}}" scroll-with-animation="{{true}}" bindscrolltolower="loadMore">
-                <view wx:for="{{relations}}"  wx:for-index="item_id"  wx:key="*this"  bindtouchstart = 'touch' id="{{item.fromUser.openid + ' '+item.toUser.openid}}" 
+                <view wx:for="{{relations}}"  wx:for-index="item_id"  wx:key="*this"  bindtouchstart = 'touch' id="{{item.toUser.openid}}" 
                 hover-class="weui-cell_active">
                 <navigator  url="../room/room?chatid={{cur_key}}">
                     <card-list-item-v2 user="{{item.toUser}}"  ></card-list-item-v2>

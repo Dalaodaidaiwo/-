@@ -12,7 +12,7 @@ Page({
     pre_school:"",
     pre_hometown:"",
     pre_speciality:"",
-
+    array: ['儿科', '口腔科', '骨科', '神经外科', '心血管外科', '泌尿外科', '普外科', '消化内科', '肾脏内科', '心血管内科', '呼吸内科', '血液内科', '内分泌科', '传染科', '神经内科', '肿瘤科', '耳鼻喉科', '精神科','皮肤科','妇产科','放射科'],
     userInfo: {},
     address: "",
     name: "",
@@ -24,7 +24,19 @@ Page({
     title: "",
     openid: "",
     counterId: "",
-    userId: ""
+    userId: "",
+    index:0
+  },
+  bindPickerChange:function(e){
+    console.log("Picker change",e.detail.value)
+    this.setData({
+      index:e.detail.value,
+   
+    })
+    this.setData({
+      companyName:this.data.array[this.data.index]
+    })
+     console.log(this.data.companyName);
   },
   onLoad: function () {
     this.setData({
@@ -42,9 +54,13 @@ Page({
           else{
           that.setData({
             pre_name:res.data[0].nickName,
+            name:res.data[0].nickName,
             pre_cellphone:res.data[0].cellphone,
+            cellphone:res.data[0].cellphone,
             pre_companyName:res.data[0].companyName,
-            pre_title:res.data[0].title
+            companyName:res.data[0].companyName,
+            pre_title:res.data[0].title,
+            title:res.data[0].title      
           })
           console.log("Phone"+that.data.pre_cellphone);
           }
@@ -64,8 +80,11 @@ Page({
             else {
               that.setData({
                   pre_school:res.data[0].school,
+                  school:res.data[0].school,
                   pre_hometown:res.data[0].hometown,
-                  pre_speciality:res.data[0].speciality
+                  hometown:res.data[0].hometown,
+                  pre_speciality:res.data[0].speciality,
+                  speciality:res.data[0].speciality
               })
             }
           },
@@ -77,7 +96,7 @@ Page({
   },
   async toEditMain(e) {
 
-    db.collection('world').where({
+    db.collection('card-items').where({
       openid: app.globalData.userInfo.openid
     }).
     get({
@@ -87,8 +106,8 @@ Page({
         if(res.data.length>0){
           //有记录，在world中更新记录
  
-          console.log("Have record.");
-          db.collection('world').
+          console.log("Have record. Update.");
+          db.collection('card-items').
             where({
               openid: app.globalData.userInfo.openid
             }).set({
@@ -104,7 +123,7 @@ Page({
           //无记录，在world中新增记录
           console.log("No record");
 
-          db.collection('world').add({
+          db.collection('card-items').add({
             // data 字段表示需新增的 JSON 数据
             data: {
               flag: "1",
@@ -149,12 +168,7 @@ Page({
       delta: 1
     });
   },
-  bindcompanyNameInput: function (e) {
-    this.setData({
-      companyName: e.detail.value
-    })
-    
-  },
+
   bindnameInput: function (e) {
     this.setData({
       name: e.detail.value
@@ -177,8 +191,6 @@ Page({
     this.setData({
       hometown: e.detail.value
     })
-   
-   
   },
   bindspecialityInput: function (e) {
     this.setData({
