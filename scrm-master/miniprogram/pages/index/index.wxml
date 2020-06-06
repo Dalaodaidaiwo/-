@@ -1,10 +1,13 @@
 <view>
     <swiper class="swiper-image" indicator-dots="true" height:10rpx autoplay="true" circular="true">
+      <navigator url="/pages/showq/showq">
         <swiper-item>
-            <image mode="scaleToFill" src='/assets/images/t1.png'></image>
+            <image mode="scaleToFill" src='/assets/images/t1.jpg'></image>
         </swiper-item>
+        </navigator>
+        
         <swiper-item>
-            <image src='/assets/images/t2.png'></image>
+            <image src='/assets/images/t2.jpg' ></image>
         </swiper-item>
         <swiper-item>
             <image src='/assets/images/t3.jpg'></image>
@@ -12,9 +15,11 @@
         <swiper-item>
             <image src='/assets/images/t4.jpg'></image>
         </swiper-item>
+        <navigator url="/pages/showd/showd">
         <swiper-item>
             <image src='/assets/images/t5.jpg'></image>
         </swiper-item>
+        </navigator>
     </swiper>
 </view>
 <view class="page index-container">

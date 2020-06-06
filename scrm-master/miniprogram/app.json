@@ -16,6 +16,7 @@
     "pages/poster-list/poster-list",
     "pages/room/room",
     "pages/showq/showq",
+    "pages/showd/showd",
     "pages/systeminfo/systeminfo",
     "pages/search/search"
   ],

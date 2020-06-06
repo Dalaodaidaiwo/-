@@ -1,0 +1,9 @@
+{
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTitleText": "阅读",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "card-default": "/components/card-default/card-default"
+  }
+}
