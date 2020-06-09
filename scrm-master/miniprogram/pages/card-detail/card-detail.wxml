@@ -27,12 +27,6 @@
                         </navigator>
                 </view>
            
-                <view class="weui-flex__item btn-view">
-                    <view bindtap="makeCall" class="my-grid" hover-class="weui-grid_active">
-                        <image class="weui-grid__icon" src="/assets/images/phone.png" />
-                        <view class="weui-grid__label">电话</view>
-                    </view>
-                </view>
             </view>
         </view>
     </view>

@@ -102,9 +102,6 @@ Page({
                 statData: res.data[0]
               });
             }
-          },
-          fail: function (event) {
-            console.error(event);
           }
         })
     });
@@ -181,41 +178,6 @@ Page({
           cardInfo: res.data[0]
         })
         that.onLoad();
-        console.log("INDEX", res.data[0]);
-      })
-      .catch(res => {
-        console.log("GG");
-      });
+      })     
   },
-  toSearch(e) {
-  },
-  toDetail(e) {
-    wx.navigateTo({
-      url: "../card-detail/card-detail"
-    });
-  },
-  toEdit(e) {
-    wx.navigateTo({
-      url: "../edit-main/edit-main"
-    });
-  },
-  toShare(e) {
-    wx.navigateTo({
-      url: "../share-main/share-main"
-    });
-  },
-  scanCode(e) {
-    wx.scanCode({
-      success(res) {
-        console.log(res)
-      }
-    });
-  },
-  mpAlert(e) {
-    wx.showToast({
-      title: 'Coming soon ...',
-      icon: 'success',
-      duration: 2000
-    })
-  }
 })
