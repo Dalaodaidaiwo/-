@@ -89,6 +89,7 @@ Page({
       });
     });
 
+
     app.callbacks.push((userInfo) => {
       db.collection("statistics-first-page")
         .where({
