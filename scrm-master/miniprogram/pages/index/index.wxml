@@ -78,10 +78,7 @@
         <view class="weui-panel">
             <view class="weui-panel__bd">
                 <view class="weui-grids">
-                    <navigator bindtap="scanCode" url="" class="weui-grid" hover-class="weui-grid_active">
-                        <image class="weui-grid__icon" src="/assets/images/scan.png" />
-                        <view class="weui-grid__label">扫一扫</view>
-                    </navigator>
+                    
                     <navigator url="/pages/card-detail/card-detail" class="weui-grid" hover-class="weui-grid_active">
                         <image class="weui-grid__icon" src="/assets/images/preview.png" />
                         <view class="weui-grid__label">预览</view>
@@ -90,6 +87,11 @@
                         <image class="weui-grid__icon" src="/assets/images/edit.png" />
                         <view class="weui-grid__label">编辑</view>
                     </navigator>
+                    <view class="weui-grid" hover-class="weui-grid_active">
+                        <image class="weui-grid__icon" src="/assets/images/share-2.png" />
+                        <view class="weui-grid__label">分享</view>
+                        <button class="share-btn" open-type="share"></button>
+                    </view>
                 </view>
             </view>
         </view>

@@ -1,5 +1,7 @@
 <view class="title">医患关系管理小程序</view>
-<image class="picture"  src="./img/doctor.png"/>
+<view style="text-align: center">
+<image class="picture"  src="./img/doctor.png" style="margin: 0 auto;"/>
+</view>
 <view class="container log-list">
   
   <view class="role">请选择您的角色</view>
