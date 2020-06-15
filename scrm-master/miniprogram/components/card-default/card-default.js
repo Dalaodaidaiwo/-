@@ -21,7 +21,7 @@ Component({
      
             db.collection("card-items")
                 .where({
-                  _openid: this.data.userInfo._openid
+                  openid: app.globalData.userInfo.openid
                 })
                 .limit(1)
                 .get({

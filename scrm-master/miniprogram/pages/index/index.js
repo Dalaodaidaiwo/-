@@ -90,22 +90,9 @@ Page({
     });
 
 
-    app.callbacks.push((userInfo) => {
-      db.collection("statistics-first-page")
-        .where({
-          _openid: userInfo._openid
-        })
-        .limit(1)
-        .get({
-          success: function (res) {
-            if (res && res.data && res.data.length) {
-              that.setData({
-                statData: res.data[0]
-              });
-            }
-          }
-        })
-    });
+   
+
+  
 
     db.collection("num")
         .where({
@@ -164,14 +151,28 @@ Page({
             })
           }
         })
-
+    db.collection('card-items')
+      .where({
+        openid: app.globalData.userInfo.openid
+      })
+      .limit(1)
+      .get({
+        success: function (res) {     
+          that.setData({
+            cardInfo: res.data[0]
+          })
+        }
+        })
+     
   },
+
+  
   onShow(e) {
     
     var that = this;
     db.collection('card-items')
       .where({
-        _openid: this.data.id
+        openid: app.globalData.userInfo.openid
       })
       .get()
       .then(res => {

@@ -38,9 +38,7 @@ Page({
       'searchList':[]
     })
 var that =this;
-db.collection('card-items').where({
-  _openid:app.globalData.userInfo.openid
-})
+db.collection('card-items')
 .get({
   success: function (res) {
     console.log(res.data[0].nickName);
@@ -59,10 +57,7 @@ db.collection('card-items').where({
 
 
 
-    db.collection('card-items').
-     where({
-         flag:"1"
-      })
+    db.collection('card-items')
       .where(_.or([
         {
           nickName:db.RegExp({
